@@ -12,8 +12,6 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 
-const ITEM_HEIGHT = 48;
-
 export default function Opcije(props) {
   const { user, isLightMode } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
