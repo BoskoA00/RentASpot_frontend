@@ -8,32 +8,18 @@ import Footer from "./Components/Shared/Footer";
 import Navigation from "./Components/Shared/Navigation";
 import CreateOglas from "./Pages/CreateOglas.js";
 import EditQuestion from "./Pages/EditQuestion.js";
-import { Navigate, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./Context/AuthContext";
 import axios from "axios";
 import EditOglas from "./Pages/EditOglas.js";
 import CreateQuestion from "./Pages/CreateQuestion.js";
-import Oglas from "./Pages/EditOglas.js";
 import DiffProfil from "./Pages/DiffProfile.js";
 import OglasView from "./Pages/OglasView.js";
 import Korisnici from "./Pages/Korisnici.js";
 import CreateAnswer from "./Pages/CreateAnswer.js";
 import EditProfile from "./Pages/EditProfile.js";
 function App() {
-  const { user, setUserFunction } = useContext(AuthContext);
-  useEffect(() => {
-    const data = localStorage.getItem("user");
-    const currentUser = JSON.parse(data);
-
-    if (currentUser) {
-      setUserFunction(currentUser);
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${currentUser.token}`;
-    }
-  }, []);
-
   return (
     <>
       <Navigation />

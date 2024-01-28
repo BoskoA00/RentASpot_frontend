@@ -14,7 +14,7 @@ const CreateAnswer = () => {
     if (user === null) {
       navigate("/login");
     }
-  }, []);
+  }, [user]);
   const handleText = (e) => {
     setText(e.target.value);
   };

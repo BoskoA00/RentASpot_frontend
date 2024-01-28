@@ -41,7 +41,11 @@ const Footer = () => {
         </div>
         <div className="socijalne_ikonice">
           <div>
-            <a href="https://www.facebook.com/" target="_blank">
+            <a
+              href="https://www.facebook.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
               <FacebookIcon
                 fontSize="large"
                 sx={isLightMode ? {} : { color: "white" }}
@@ -49,7 +53,11 @@ const Footer = () => {
             </a>
           </div>
           <div>
-            <a href="https://www.instagram.com" target="_blank">
+            <a
+              href="https://www.instagram.com"
+              rel="noreferrer"
+              target="_blank"
+            >
               <InstagramIcon
                 fontSize="large"
                 sx={isLightMode ? {} : { color: "white" }}
@@ -57,7 +65,7 @@ const Footer = () => {
             </a>
           </div>
           <div>
-            <a href="https://www.reddit.com" target="_blank">
+            <a href="https://www.reddit.com" rel="noreferrer" target="_blank">
               <RedditIcon
                 fontSize="large"
                 sx={isLightMode ? {} : { color: "white" }}
@@ -65,7 +73,7 @@ const Footer = () => {
             </a>
           </div>
           <div>
-            <a href="https://www.x.com" target="_blank">
+            <a href="https://www.x.com" rel="noreferrer" target="_blank">
               <XIcon
                 sx={isLightMode ? {} : { color: "white" }}
                 fontSize="large"

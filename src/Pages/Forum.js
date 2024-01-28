@@ -6,7 +6,7 @@ import "../CSS/Forum.css";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 const Forum = () => {
-  const { isLightMode, user, setUserFunction } = useContext(AuthContext);
+  const { isLightMode, user } = useContext(AuthContext);
   const [Questions, setQuestions] = useState([]);
   useEffect(() => {
     pokupiPitanja();

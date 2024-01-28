@@ -4,13 +4,10 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import ReplyIcon from "@mui/icons-material/Reply";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../CSS/Question.css";
 import axios from "axios";
 import { AuthContext } from "../../Context/AuthContext";
-const ITEM_HEIGHT = 48;
 
 export default function OpcijeOdgovora(props) {
   const { isLightMode } = React.useContext(AuthContext);

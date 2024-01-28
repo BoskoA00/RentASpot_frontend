@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Oglas from "../Components/Profil/Oglas";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { Button } from "@mui/material";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../CSS/DiffProfile.css";
 import { AuthContext } from "../Context/AuthContext";

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, FormControlLabel, Input, RadioGroup } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import FormData from "form-data";

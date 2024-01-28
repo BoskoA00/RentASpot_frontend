@@ -1,12 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext.js";
 import Axios from "axios";
 import "../../CSS/Navigation.css";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import HouseIcon from "@mui/icons-material/House";
-import { withTheme } from "@emotion/react";
 import { useMediaQuery } from "@mui/material";
 const MyNavigation = () => {
   const { isLightMode, setIsLightModeFunction, user, setUserFunction } =

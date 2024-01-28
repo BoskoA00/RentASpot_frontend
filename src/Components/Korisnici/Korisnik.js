@@ -1,10 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "../../CSS/Korisnik.css";
 import { Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import { AuthContext } from "../../Context/AuthContext";
-import { useNavigate } from "react-router-dom";
 const Korisnik = (props) => {
   const { isLightMode } = useContext(AuthContext);
   const handleDelete = async () => {

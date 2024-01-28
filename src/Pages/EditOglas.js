@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import Axios from "axios";
 import "../CSS/Oglas_page.css";
 const Oglas = () => {
-  const { user, setUserFunction } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [oglas, setOglas] = useState({});
