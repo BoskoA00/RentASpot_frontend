@@ -1,0 +1,42 @@
+.answer-main {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #427d9d;
+  border-radius: 15px;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  width: 90%;
+  height: auto;
+  overflow: hidden;
+}
+.answer-user {
+  border-bottom: 1px solid black;
+  width: 100%;
+  padding-left: 0.2em;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.answer-user a {
+  text-decoration: none;
+  color: #427d9d;
+}
+.answer-content {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  padding-right: 0.3em;
+  color: #427d9d;
+}
+.answer-user-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.answer-user-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: flex-end;
+}

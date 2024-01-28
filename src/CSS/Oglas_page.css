@@ -1,0 +1,135 @@
+.oglas-page-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 40em;
+  align-items: center;
+}
+.oglas-page-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  border: 3px solid #427d9d;
+  border-radius: 15px;
+  background-color: #427d9d;
+  padding: 1.5em;
+  height: 70%;
+  color: #ddf2fd;
+}
+.oglas-page-form input {
+  border-radius: 15px;
+  padding-left: 0.5em;
+  font-size: 1rem;
+}
+.oglas-page-title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+.oglas-page-title-label {
+  display: flex;
+  font-size: 18pt;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+.oglas-page-title-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+.oglas-page-title-input input {
+  width: 100%;
+  font-size: 14pt;
+}
+.oglas-page-cityCountry {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+.oglas-page-cc-1 {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.oglas-page-cc-1 label {
+  font-size: 18pt;
+}
+.oglas-page-cc-1 input {
+  font-size: 14pt;
+}
+.oglas-page-cc-2 {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.oglas-page-cc-2 label {
+  font-size: 18pt;
+}
+.oglas-page-cc-2 input {
+  font-size: 14pt;
+}
+.oglas-page-priceSize {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+.oglas-page-ps-1 {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.oglas-page-ps-1 label {
+  font-size: 18pt;
+}
+.oglas-page-ps-1 input {
+  font-size: 14pt;
+}
+.oglas-page-ps-2 {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.oglas-page-ps-2 label {
+  font-size: 18pt;
+}
+.oglas-page-ps-2 input {
+  font-size: 14pt;
+}
+.oglas-page-type {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+.oglas-page-type-label {
+  display: flex;
+  font-size: 18pt;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+.oglas-page-type-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+.oglas-page-type-input select {
+  width: 100%;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  padding-left: 0.5em;
+}
+.oglas-page-type-input option {
+  border-radius: 15px;
+  padding-left: 0.5em;
+}

@@ -1,0 +1,119 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9bbec8;
+  padding: 1rem;
+  min-height: 1000px;
+}
+
+.register-container-main {
+  border: 3px solid #427d9d;
+  width: 30%;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-ime-prezime {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Updated alignment */
+  padding: 1rem;
+}
+
+.register-ime,
+.register-prezime,
+.register-mail-input,
+.register-lozinka-input,
+.register-slika-input,
+.register-role-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  padding: 0.5em;
+  color: #427d9d;
+}
+
+.register-ime-label,
+.register-prezime-label,
+.register-email-label,
+.register-lozinka-label,
+.register-slika-label,
+.register-role-label {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  color: #427d9d;
+}
+
+.register-ime-input input,
+.register-prezime-input input,
+.register-mail-input input,
+.register-lozinka-input input,
+.register-slika-input input,
+.register-role-input select {
+  font-size: 15pt;
+  width: 100%;
+  padding-left: 0.5rem;
+  border-radius: 12px;
+  border: 2px solid #427d9d;
+  font-style: italic;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.neispravan-email,
+.register-neispravna-lozinka,
+.register-neispravna-potvrda {
+  color: red;
+  font-style: italic;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  margin-top: 5px; /* Added margin for spacing */
+}
+.ime-Error,
+.prezime-Error {
+  color: red;
+  font-style: italic;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  margin-top: 5px;
+}
+.input-group > input[type="file"]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.register-button {
+  margin-top: 1rem;
+}
+
+.logout-button {
+  background-color: transparent;
+  border: transparent;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  color: black;
+  font-size: 16pt;
+}
+@media only screen and (max-width: 768px) {
+  .register-container-main {
+    width: 90%;
+  }
+  .register-ime-prezime {
+    display: flex;
+    flex-direction: column;
+  }
+}

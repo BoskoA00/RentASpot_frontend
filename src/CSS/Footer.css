@@ -1,0 +1,74 @@
+.footer {
+  text-align: center;
+  background-color: #427d9d;
+  min-height: 5em;
+  height: 100px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.app-name-f {
+  display: flex;
+  align-items: center;
+}
+
+.app-name-f a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+.app-name-f h1 {
+  margin: 0;
+}
+.logoIIme-f {
+  display: flex;
+  align-items: center;
+}
+.logo-f {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+  width: 100px;
+  height: 100%;
+}
+.logo-f img {
+  width: 70%;
+  height: 90%;
+  object-fit: contain;
+}
+.socijalne_mreze {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.socijalne_ikonice {
+  display: flex;
+  justify-content: space-evenly;
+}
+.socijalne_ikonice a {
+  text-decoration: none;
+  color: black;
+}
+@media only screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app-name-f,
+  .logo-f {
+    margin-left: 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .socijalne_ikonice {
+    margin-top: 1em;
+  }
+}

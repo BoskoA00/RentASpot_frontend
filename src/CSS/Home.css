@@ -1,0 +1,79 @@
+.homepage-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  background-color: #ddf2fd;
+  min-height: 1600px;
+}
+.homepage-oglasi {
+  border: 3px solid #427d9d;
+  border-radius: 12px;
+  width: 60%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 2em;
+  min-height: 1500px;
+}
+.oglasi {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.pagination-controls button {
+  background-color: #427d9d;
+  color: white;
+  border-radius: 20px;
+  margin-left: 1em;
+  margin-right: 1em;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border: transparent;
+  width: 50px;
+  height: 50px;
+}
+.pagination-controls span {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 18pt;
+}
+.pag-divs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.span-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media only screen and (max-width: 768px) {
+  .homepage-main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .homepage-oglasi {
+    width: 80%;
+    margin-right: 0;
+  }
+
+  .pagination-controls {
+    flex-wrap: wrap;
+  }
+
+  .pagination-controls button {
+    margin: 0.5em;
+  }
+}
