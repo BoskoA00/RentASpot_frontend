@@ -1,0 +1,67 @@
+.oglas {
+  border: 3px solid #9bbec8;
+  display: flex;
+  flex-direction: row;
+  float: left;
+  height: 250px;
+  margin: 1em;
+  border-radius: 12px;
+}
+.oglas-slika {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  align-items: center;
+}
+.oglas-slika img {
+  width: 80%;
+  height: 90%;
+}
+.oglas-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 90%;
+  padding: 0.5rem;
+  padding-top: 1.5em;
+}
+.oglas-info-ime {
+  margin-bottom: 0.5em;
+  font-size: 12pt;
+  border: 1px solid #427d9d;
+  border-radius: 12px;
+  background-color: #427d9d;
+  color: white;
+  padding-left: 0.5rem;
+}
+.oglas-info-ime a {
+  text-decoration: none;
+  color: white;
+}
+.oglas-info-ime,
+.oglas-info-ime a:hover {
+  color: #ddf2fd;
+}
+.oglas-info-grad-drzava {
+  font-size: 15pt;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+.oglas-info-velicina {
+  font-size: 15pt;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+.oglas-info-cena {
+  font-weight: bold;
+  font-size: 24pt;
+  text-align: left;
+  padding-left: 0.5rem;
+  background-color: #427d9d;
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
