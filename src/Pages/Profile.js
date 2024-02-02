@@ -13,10 +13,8 @@ const Profil = () => {
     if (user === null) {
       navigate("/login");
     }
-  }, []);
-  useEffect(() => {
-    PokupiNoveOglase();
-  }, []);
+  }, [navigate, user]);
+
   const PokupiNoveOglase = async () => {
     try {
       const response = await Axios.get(
@@ -28,6 +26,9 @@ const Profil = () => {
       console.log("Error: " + e);
     }
   };
+  useEffect(() => {
+    PokupiNoveOglase();
+  }, []);
   const HandleDelete = async () => {
     try {
       await Axios.delete(
@@ -96,7 +97,7 @@ const Profil = () => {
           </div>
         </div>
         <div className="profil-dugmad-m">
-          {user.role == 1 && (
+          {user.role === 1 && (
             <div>
               <Link to={"/createOglas"}>
                 <Button
@@ -148,7 +149,7 @@ const Profil = () => {
           </div>
         </div>
       </div>
-      {user.role == 1 && (
+      {user.role === 1 && (
         <div
           className="profil-main-2-m"
           style={

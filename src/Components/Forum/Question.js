@@ -35,7 +35,11 @@ const Question = (props) => {
         <div className="options">
           {user && (
             <div>
-              <Opcije id={props.id} userId={props.userId} />
+              <Opcije
+                id={props.id}
+                pokupiPitanja={props.pokupiPitanja}
+                userId={props.userId}
+              />
             </div>
           )}
         </div>
@@ -71,6 +75,7 @@ const Question = (props) => {
               user={answer.user}
               content={answer.content}
               userId={answer.userId}
+              pokupiPitanja={props.pokupiPitanja}
             />
           );
         })}

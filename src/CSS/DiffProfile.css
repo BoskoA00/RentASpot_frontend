@@ -81,6 +81,13 @@
   margin-left: 35px;
   margin-bottom: 1em;
 }
+.profil-dugmad-dp {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5em;
+}
 @media only screen and (max-width: 768px) {
   .profil-main-1 {
     width: 100%;

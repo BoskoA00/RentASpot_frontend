@@ -78,7 +78,7 @@ const Register = () => {
     } else {
       setLozinkaError("");
     }
-    if (password1 != password) {
+    if (password1 !== password) {
       setProveraLozinke("Lozinke nisu iste");
       return;
     } else {

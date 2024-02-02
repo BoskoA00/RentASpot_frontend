@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useTransition } from "react";
 import { AuthContext } from "../Context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button, FormLabel, Input } from "@mui/material";
 import "../CSS/EditProfile.css";
 import axios from "axios";
@@ -8,13 +8,19 @@ import axios from "axios";
 const EditProfile = () => {
   const { user, isLightMode, setUserFunction } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const [firstName, setFirstName] = useState(user ? user.firstName : "");
-  const [lastName, setLastName] = useState(user ? user.lastName : "");
-  const [email, setEmail] = useState(user ? user.email : "");
-
+  const [korisnik, setKorisnik] = useState({});
+  const { id } = useParams();
+  const [firstName, setFirstName] = useState(
+    korisnik ? korisnik.firstName : ""
+  );
+  const [lastName, setLastName] = useState(korisnik ? korisnik.lastName : "");
+  const [email, setEmail] = useState(korisnik ? korisnik.email : "");
+  const [password, setPassword] = useState("");
+  console.log(user === null);
+  console.log(!(user && user.role === 2));
   useEffect(() => {
-    if (user === null) {
+    console.log(user);
+    if (user === null || !(user && user.role === 2)) {
       navigate("/login");
     }
   }, [user, navigate]);
@@ -23,17 +29,38 @@ const EditProfile = () => {
       const resp = await axios.put(
         "http://boskowindows-001-site1.anytempurl.com/api/User",
         {
-          id: user.id,
+          id: korisnik.id,
           firstName: firstName,
           lastName: lastName,
           email: email,
+          password: password,
         }
       );
-      setUserFunction(resp.data);
+      navigate(`/user/${korisnik.id}`);
     } catch (e) {
       console.log("Error:" + e);
     }
   };
+  const PokupiKorisnika = async () => {
+    try {
+      const resp = await axios.get(
+        `http://boskowindows-001-site1.anytempurl.com/api/User/${id}`
+      );
+      setKorisnik(resp.data);
+      setEmail(resp.data.email);
+      setFirstName(resp.data.firstName);
+      setLastName(resp.data.lastName);
+    } catch (e) {
+      console.log("Error:" + e);
+    }
+  };
+  useEffect(() => {
+    PokupiKorisnika();
+    setEmail(korisnik.email);
+    setFirstName(korisnik.firstName);
+    setLastName(korisnik.lastName);
+    console.log(korisnik);
+  }, []);
   return (
     <div
       className="editProfile-main"
@@ -49,7 +76,7 @@ const EditProfile = () => {
               <FormLabel
                 sx={
                   isLightMode
-                    ? { color: "#427d9d", fontSize: "1.5rem" }
+                    ? { color: "black", fontSize: "1.5rem" }
                     : { color: "white", fontSize: "1.5rem" }
                 }
               >
@@ -74,7 +101,7 @@ const EditProfile = () => {
               <FormLabel
                 sx={
                   isLightMode
-                    ? { color: "#427d9d", fontSize: "1.5rem" }
+                    ? { color: "black", fontSize: "1.5rem" }
                     : { color: "white", fontSize: "1.5rem" }
                 }
               >
@@ -104,7 +131,7 @@ const EditProfile = () => {
             <FormLabel
               sx={
                 isLightMode
-                  ? { color: "#427d9d", fontSize: "1.5rem" }
+                  ? { color: "black ", fontSize: "1.5rem" }
                   : { color: "white", fontSize: "1.5rem" }
               }
             >
@@ -125,6 +152,35 @@ const EditProfile = () => {
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              fullWidth
+            />
+          </div>
+        </div>
+        <div className="password">
+          <div>
+            <FormLabel
+              sx={
+                isLightMode
+                  ? { color: "black", fontSize: "1.5rem" }
+                  : { color: "white", fontSize: "1.5rem" }
+              }
+            >
+              Password:
+            </FormLabel>
+          </div>
+          <div>
+            <Input
+              sx={
+                isLightMode
+                  ? { color: "#ddf2fd", fontSize: "1.5rem" }
+                  : {
+                      backgroundColor: "#202020",
+                      color: "white",
+                      fontSize: "1.5rem",
+                    }
+              }
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
               fullWidth
             />
           </div>

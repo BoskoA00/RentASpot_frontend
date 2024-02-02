@@ -13,7 +13,6 @@ const OglasView = () => {
   useEffect(() => {
     PokupiOgas();
   }, []);
-
   const PokupiOgas = async () => {
     try {
       const response = await Axios.get(
@@ -103,7 +102,7 @@ const OglasView = () => {
           </div>
         </div>
       </div>
-      {user && (user.id === oglas.userId || user.Role === 2) && (
+      {user && (user.id === oglas.userId || user.role === 2) && (
         <div className="oglasView-buttons">
           <div className="oglasView-editB">
             <Link to={`/Oglas/${oglas.id}/edit`}>

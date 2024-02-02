@@ -56,6 +56,7 @@ const Forum = () => {
             answers={question.answers}
             userId={question.userId}
             imageName={question.user.imageName}
+            pokupiPitanja={pokupiPitanja}
           />
         );
       })}

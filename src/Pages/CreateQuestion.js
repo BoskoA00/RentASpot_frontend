@@ -9,6 +9,8 @@ const CreateQuestion = () => {
   const { user, isLightMode } = useContext(AuthContext);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
+  const [titleError, setTitleError] = useState("");
+  const [contentError, setContentError] = useState("");
   const [content, setContent] = useState("");
   useEffect(() => {
     if (user === null) {
@@ -22,6 +24,19 @@ const CreateQuestion = () => {
     setContent(e.target.value);
   };
   const handleSubimt = async () => {
+    if (title.trim().length === 0) {
+      setTitleError("Pitanje mora imati naslov");
+      return;
+    } else {
+      setTitleError("");
+    }
+    if (content.trim().length === 0) {
+      setContentError("Morate imati sadrzaj");
+      return;
+    } else {
+      setContentError("");
+    }
+
     try {
       await axios.post(
         "http://boskowindows-001-site1.anytempurl.com/api/Question",
@@ -62,24 +77,29 @@ const CreateQuestion = () => {
             </FormLabel>
           </div>
           <div>
-            <Input
-              variant="soft"
-              sx={
-                isLightMode
-                  ? {
-                      backgroundColor: "white",
-                      color: "black",
-                      fontSize: "1.5rem ",
-                    }
-                  : {
-                      backgroundColor: "#202020",
-                      color: "white",
-                      fontSize: "1.5rem ",
-                    }
-              }
-              type="text"
-              onChange={handleTitle}
-            />
+            <div>
+              <Input
+                variant="soft"
+                sx={
+                  isLightMode
+                    ? {
+                        backgroundColor: "white",
+                        color: "black",
+                        fontSize: "1.5rem ",
+                      }
+                    : {
+                        backgroundColor: "#202020",
+                        color: "white",
+                        fontSize: "1.5rem ",
+                      }
+                }
+                type="text"
+                onChange={handleTitle}
+              />
+            </div>
+            <div style={isLightMode ? { color: "red" } : { color: "white" }}>
+              {titleError}
+            </div>
           </div>
         </div>
         <div className="question-text">
@@ -95,25 +115,30 @@ const CreateQuestion = () => {
             </FormLabel>
           </div>
           <div className="question-textarea">
-            <Textarea
-              sx={
-                isLightMode
-                  ? {
-                      height: "80%",
-                      backgroundColor: "white",
-                      color: "black",
-                      fontSize: "1rem",
-                    }
-                  : {
-                      height: "80%",
-                      backgroundColor: "#202020",
-                      color: "white",
-                      fontSize: "1rem",
-                    }
-              }
-              size="lg"
-              onChange={handleContent}
-            />
+            <div>
+              <Textarea
+                sx={
+                  isLightMode
+                    ? {
+                        height: "80%",
+                        backgroundColor: "white",
+                        color: "black",
+                        fontSize: "1rem",
+                      }
+                    : {
+                        height: "80%",
+                        backgroundColor: "#202020",
+                        color: "white",
+                        fontSize: "1rem",
+                      }
+                }
+                size="lg"
+                onChange={handleContent}
+              />
+            </div>
+            <div style={isLightMode ? { color: "red" } : { color: "white" }}>
+              {contentError}
+            </div>
           </div>
         </div>
         <div className="question-button">

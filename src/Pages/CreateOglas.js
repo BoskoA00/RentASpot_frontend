@@ -36,8 +36,9 @@ const CreateOglas = () => {
     formData.append("PicturePath", fileName);
     formData.append("Type", type);
     formData.append("UserId", vlasnikId);
-
-    try {
+    console.log(city);
+    console.log(country);
+    /*try {
       const response = await Axios.post(
         "http://boskowindows-001-site1.anytempurl.com/api/Oglas",
         formData,
@@ -51,13 +52,16 @@ const CreateOglas = () => {
       navigate("/home");
     } catch (e) {
       console.log("Error:" + e);
-    }
+    }*/
   };
   const titleHandler = (e) => {
     setTitle(e.target.value);
   };
   const cityHandler = (e) => {
     setCity(e.target.value);
+    const gradIZemlja = e.target.value.split(",");
+    setCountry(gradIZemlja[0]);
+    setCity(gradIZemlja[1]);
   };
   const countryHandler = (e) => {
     setCountry(e.target.value);
@@ -114,15 +118,15 @@ const CreateOglas = () => {
             <label>Grad:</label>
           </div>
           <div>
-            <input
-              onChange={cityHandler}
-              type="text"
-              style={
-                isLightMode
-                  ? {}
-                  : { backgroundColor: "#202020", color: "white" }
-              }
-            />
+            <select onChange={cityHandler}>
+              <option value={"Srbija,Novi Pazar"}>Novi Pazar</option>
+              <option value={"Srbija,Raska"}>Raska</option>
+              <option value={"Srbija,Beograd"}>Beograd</option>
+              <option value={"Srbija,Novi Sad"}>Novi Sad</option>
+              <option value={"Srbija,Kragujevac"}>Kragujevac</option>
+              <option value={"Srbija,Krusevac"}>Krusevac</option>
+              <option value={"Crna Gora,Podgorica"}>Podgorica</option>
+            </select>
           </div>
         </div>
         <div className="createOglas-form-country">

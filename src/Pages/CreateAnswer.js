@@ -10,6 +10,7 @@ const CreateAnswer = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [text, setText] = useState("");
+  const [textError, setTextError] = useState("");
   useEffect(() => {
     if (user === null) {
       navigate("/login");
@@ -19,6 +20,12 @@ const CreateAnswer = () => {
     setText(e.target.value);
   };
   const handleSubmit = async () => {
+    if (text.trim().length === 0) {
+      setTextError("Morate imati tekst odgovora");
+      return;
+    } else {
+      setTextError("");
+    }
     try {
       const response = await axios.post(
         "http://boskowindows-001-site1.anytempurl.com/api/Question/Answers",
@@ -59,16 +66,21 @@ const CreateAnswer = () => {
             </FormLabel>
           </div>
           <div>
-            <Input
-              sx={
-                isLightMode
-                  ? {}
-                  : { backgroundColor: "#202020", color: "white" }
-              }
-              variant="soft"
-              type="text"
-              onChange={handleText}
-            />
+            <div>
+              <Input
+                sx={
+                  isLightMode
+                    ? {}
+                    : { backgroundColor: "#202020", color: "white" }
+                }
+                variant="soft"
+                type="text"
+                onChange={handleText}
+              />
+            </div>
+            <div style={isLightMode ? { color: "red" } : { color: "white" }}>
+              {textError}
+            </div>
           </div>
         </div>
         <div className="answer-button">

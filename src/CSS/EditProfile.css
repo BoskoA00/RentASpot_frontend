@@ -13,7 +13,7 @@
   border-radius: 15px;
   overflow: hidden;
   background-color: #427d9d;
-  height: 250px;
+  height: auto;
   justify-content: space-evenly;
 }
 .ImeiPrezime {
@@ -44,6 +44,15 @@
   align-items: center;
 }
 .Email div {
+  width: 90%;
+}
+.password {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  align-items: center;
+}
+.password div {
   width: 90%;
 }
 .dugme {

@@ -29,8 +29,8 @@ const Login = () => {
     } else {
       setError(null);
     }
-    if (Password.length <= 0) {
-      setPassError("Morate uneti lozinku");
+    if (Password.length < 7) {
+      setPassError("Lozinka mora imati 7 karaktera");
       return;
     } else {
       setPassError(null);

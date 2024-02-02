@@ -31,7 +31,7 @@ export default function Opcije(props) {
       await axios.delete(
         `http://boskowindows-001-site1.anytempurl.com/api/Question/${props.id}`
       );
-      navigate("/forum");
+      props.pokupiPitanja();
     } catch (e) {
       console.log("Error:" + e);
     }

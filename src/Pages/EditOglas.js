@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import Axios from "axios";
 import "../CSS/Oglas_page.css";
 const Oglas = () => {
-  const { user } = useContext(AuthContext);
+  const { user, isLightMode } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [oglas, setOglas] = useState({});
@@ -86,8 +86,14 @@ const Oglas = () => {
     }
   };
   return (
-    <div className="oglas-page-main">
-      <div className="oglas-page-form">
+    <div
+      className="oglas-page-main"
+      style={isLightMode ? {} : { backgroundColor: "#202020" }}
+    >
+      <div
+        className="oglas-page-form"
+        style={isLightMode ? {} : { backgroundColor: "black", color: "white" }}
+      >
         <div className="oglas-page-title">
           <div className="oglas-page-title-label">
             <label>Naslov:</label>
@@ -167,7 +173,11 @@ const Oglas = () => {
           <Button
             fullWidth
             variant="contained"
-            sx={{ marginBottom: "0.5em" }}
+            sx={
+              isLightMode
+                ? { marginBottom: "0.5em" }
+                : { backgroundColor: "#202020" }
+            }
             onClick={onSubmitHandle}
           >
             Promeni oglas
