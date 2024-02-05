@@ -137,6 +137,7 @@ const CreateOglas = () => {
             <input
               onChange={countryHandler}
               type="text"
+              value={country}
               style={
                 isLightMode
                   ? {}

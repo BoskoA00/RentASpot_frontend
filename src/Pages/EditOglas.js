@@ -8,24 +8,37 @@ const Oglas = () => {
   const { user, isLightMode } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
-  const [oglas, setOglas] = useState({});
+  const [idVlasnika, setVlasnikId] = useState(0);
+  const [Title, setTitle] = useState("");
+  const [City, setCity] = useState("");
+  const [Country, setCountry] = useState("");
+  const [Size, setSize] = useState(0);
+  const [Price, setPrice] = useState(0);
+  const [Type, setType] = useState(0);
+
   useEffect(() => {
     PokupiOgas();
   }, []);
   useEffect(() => {
-    setTitle(oglas.title || "");
-    setCity(oglas.city || "");
-    setCountry(oglas.country || "");
-    setSize(oglas.size || "");
-    setPrice(oglas.price || "");
-    setType(oglas.type || "");
-  }, [oglas]);
+    setTitle("");
+    setCity("");
+    setCountry("");
+    setSize(0);
+    setPrice(0);
+    setType(0);
+  }, []);
   const PokupiOgas = async () => {
     try {
       const response = await Axios.get(
         `http://boskowindows-001-site1.anytempurl.com/api/Oglas/${id}`
       );
-      setOglas(response.data);
+      setVlasnikId(response.data.id);
+      setTitle(response.data.title);
+      setCity(response.data.city);
+      setCountry(response.data.country);
+      setSize(response.data.size);
+      setPrice(response.data.price);
+      setType(response.data.type);
     } catch (e) {
       console.log("Error:" + e);
     }
@@ -36,26 +49,19 @@ const Oglas = () => {
       const response = await Axios.put(
         `http://boskowindows-001-site1.anytempurl.com/api/Oglas/${id}`,
         {
-          title: Title,
-          city: City,
-          country: Country,
-          size: Size,
-          price: Price,
-          type: Type,
+          Title: Title,
+          City: City,
+          Country: Country,
+          Size: Size,
+          Price: Price,
+          Type: Type,
         }
       );
       navigate("/home");
     } catch (e) {
-      console.log("Error: " + e);
+      console.log(e);
     }
   };
-
-  const [Title, setTitle] = useState(oglas.title);
-  const [City, setCity] = useState(oglas.city);
-  const [Country, setCountry] = useState(oglas.country);
-  const [Size, setSize] = useState(oglas.size);
-  const [Price, setPrice] = useState(oglas.price);
-  const [Type, setType] = useState(oglas.type);
 
   const titleHandler = (e) => {
     setTitle(e.target.value);
@@ -99,11 +105,7 @@ const Oglas = () => {
             <label>Naslov:</label>
           </div>
           <div className="oglas-page-title-input">
-            <input
-              type="text"
-              onChange={titleHandler}
-              defaultValue={oglas.title}
-            />
+            <input type="text" onChange={titleHandler} value={Title} />
           </div>
         </div>
         <div className="oglas-page-cityCountry">
@@ -112,11 +114,7 @@ const Oglas = () => {
               <label>Grad</label>
             </div>
             <div>
-              <input
-                type="text"
-                onChange={cityHandle}
-                defaultValue={oglas.city}
-              />
+              <input type="text" onChange={cityHandle} value={City} />
             </div>
           </div>
           <div className="oglas-page-cc-2">
@@ -124,11 +122,7 @@ const Oglas = () => {
               <label>Zemlja</label>
             </div>
             <div>
-              <input
-                type="text"
-                onChange={countryHandle}
-                defaultValue={oglas.country}
-              />
+              <input type="text" onChange={countryHandle} value={Country} />
             </div>
           </div>
         </div>
@@ -138,11 +132,7 @@ const Oglas = () => {
               <label>Cena:</label>
             </div>
             <div>
-              <input
-                type="number"
-                onChange={priceHandle}
-                defaultValue={oglas.price}
-              />
+              <input type="number" onChange={priceHandle} value={Price} />
             </div>
           </div>
           <div className="oglas-page-ps-2">
@@ -150,11 +140,7 @@ const Oglas = () => {
               <label>Velicina:</label>
             </div>
             <div>
-              <input
-                type="number"
-                onChange={sizeHandle}
-                defaultValue={oglas.size}
-              />
+              <input type="number" onChange={sizeHandle} value={Size} />
             </div>
           </div>
         </div>
@@ -163,7 +149,7 @@ const Oglas = () => {
             <label>Tip oglasa:</label>
           </div>
           <div className="oglas-page-type-input">
-            <select onChange={typeHandle} defaultValue={oglas.type}>
+            <select onChange={typeHandle} value={Type}>
               <option value={0}>Prodaja</option>
               <option value={1}>Iznajmljivanje</option>
             </select>
@@ -183,7 +169,7 @@ const Oglas = () => {
             Promeni oglas
           </Button>
         </div>
-        {user && (user.id === oglas.userId || user.Role === 2) && (
+        {user && (user.id === idVlasnika || user.Role === 2) && (
           <div className="oglas-page-button">
             <Button
               fullWidth

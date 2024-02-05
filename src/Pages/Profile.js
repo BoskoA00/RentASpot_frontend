@@ -57,8 +57,8 @@ const Profil = () => {
             : { backgroundColor: "black", border: "3px solid black" }
         }
       >
-        <div className="podaci">
-          <div className="profil-data-image">
+        <div className="podaci-m">
+          <div className="profil-data-image-m">
             <img
               src={`http://boskowindows-001-site1.anytempurl.com/Images/${user.imageName}`}
               alt={user.imageName}

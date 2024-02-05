@@ -43,11 +43,6 @@ const Pretraga = ({ onSearch }) => {
     setVelicina(0);
     setMaxCena(0);
     setMinCena(0);
-    document.getElementsByName("Drzava")[0].value = "";
-    document.getElementById("Grad").value = "";
-    document.getElementsByName("Velicina")[0].value = 0;
-    document.getElementsByName("MaxCena")[0].value = 0;
-    document.getElementsByName("MinCena")[0].value = 0;
 
     if (onSearch) {
       onSearch({});
@@ -61,18 +56,13 @@ const Pretraga = ({ onSearch }) => {
       <div className="search-params-div">
         <div className="search-params-div-label">Drzava:</div>
         <div className="search-params-div-input">
-          <input name="Drzava" onChange={PromenaDrzave} defaultValue={drzava} />
+          <input name="Drzava" onChange={PromenaDrzave} value={drzava} />
         </div>
       </div>
       <div className="search-params-div">
         <div className="search-params-div-label">Grad:</div>
         <div className="search-params-div-input">
-          <input
-            id="Grad"
-            onChange={PromenaGrada}
-            defaultValue={grad}
-            name="Grad"
-          />
+          <input id="Grad" onChange={PromenaGrada} value={grad} name="Grad" />
         </div>
       </div>
       <div className="search-params-div">
@@ -84,10 +74,10 @@ const Pretraga = ({ onSearch }) => {
             size="small"
             onChange={PromenaVelicine}
             min={0}
+            value={velicina}
             max={1000}
-            defaultValue={velicina}
             aria-label="Small"
-            valueLabelDisplay="auto"
+            valueLabelDisplay="on"
           />
         </div>
       </div>
@@ -99,11 +89,11 @@ const Pretraga = ({ onSearch }) => {
             sx={{ color: "white" }}
             onChange={PromenaMaxCene}
             size="small"
-            defaultValue={maxCena}
+            value={maxCena}
             min={0}
             aria-label="Small"
-            valueLabelDisplay="auto"
-            max={3000000}
+            valueLabelDisplay="on"
+            max={1000000}
           />
         </div>
       </div>
@@ -114,12 +104,12 @@ const Pretraga = ({ onSearch }) => {
             sx={{ color: "white" }}
             name="MinCena"
             size="small"
-            defaultValue={minCena}
+            value={minCena}
             onChange={PromenaMinCene}
             min={0}
-            max={5000}
+            max={10000}
             aria-label="Small"
-            valueLabelDisplay="auto"
+            valueLabelDisplay="on"
           />
         </div>
       </div>

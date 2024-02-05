@@ -95,9 +95,11 @@ const DiffProfil = () => {
                   sx={
                     isLightMode
                       ? {
+                          width: "90%",
+
                           ":hover": { backgroundColor: "white", color: "blue" },
                         }
-                      : { backgroundColor: "#202020" }
+                      : { backgroundColor: "#202020", width: "90%" }
                   }
                 >
                   Izmeni podatke
@@ -110,6 +112,7 @@ const DiffProfil = () => {
                 variant="contained"
                 sx={{
                   backgroundColor: "red",
+                  width: "90%",
                   ":hover": { backgroundColor: "white", color: "red" },
                 }}
               >

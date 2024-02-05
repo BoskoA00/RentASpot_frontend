@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useTransition } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, FormLabel, Input } from "@mui/material";
@@ -6,7 +6,7 @@ import "../CSS/EditProfile.css";
 import axios from "axios";
 
 const EditProfile = () => {
-  const { user, isLightMode, setUserFunction } = useContext(AuthContext);
+  const { user, isLightMode } = useContext(AuthContext);
   const navigate = useNavigate();
   const [korisnik, setKorisnik] = useState({});
   const { id } = useParams();
@@ -16,10 +16,7 @@ const EditProfile = () => {
   const [lastName, setLastName] = useState(korisnik ? korisnik.lastName : "");
   const [email, setEmail] = useState(korisnik ? korisnik.email : "");
   const [password, setPassword] = useState("");
-  console.log(user === null);
-  console.log(!(user && user.role === 2));
   useEffect(() => {
-    console.log(user);
     if (user === null || !(user && user.role === 2)) {
       navigate("/login");
     }

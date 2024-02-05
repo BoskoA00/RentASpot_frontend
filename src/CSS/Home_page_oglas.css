@@ -3,17 +3,18 @@
   display: flex;
   flex-direction: row;
   float: left;
-  height: 250px;
+  height: auto;
   margin: 1em;
   border-radius: 12px;
 }
 .oglas-slika {
-  width: 35%;
+  width: 20em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
   align-items: center;
+  margin: 0.5em;
 }
 .oglas-slika img {
   width: 80%;
@@ -64,4 +65,91 @@
   color: white;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
+}
+@media only screen and (max-width: 768px) {
+  .oglas {
+    border: 3px solid #9bbec8;
+    display: flex;
+    flex-direction: row;
+    float: left;
+    height: auto;
+    margin: 1em;
+    border-radius: 12px;
+  }
+  .oglas-slika {
+    width: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+  }
+  .oglas-slika img {
+    width: 80%;
+    height: 90%;
+  }
+  .oglas-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    padding: 0.5rem;
+    padding-top: 0.5em;
+    font-size: 1.5rem;
+  }
+  .oglas-info-ime {
+    margin-bottom: 0.5em;
+    font-size: 10pt;
+    border: 1px solid #427d9d;
+    border-radius: 12px;
+    background-color: #427d9d;
+    color: white;
+    padding-left: 0.5rem;
+  }
+  .oglas-info-grad-drzava {
+    font-size: 12pt;
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .oglas-info-velicina {
+    font-size: 12pt;
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .oglas-info-cena {
+    font-weight: bold;
+    font-size: 15pt;
+    text-align: left;
+    padding-left: 0.5rem;
+    background-color: #427d9d;
+    border-radius: 12px;
+    color: white;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .oglas {
+    border: 3px solid #9bbec8;
+    display: flex;
+    flex-direction: row;
+    float: left;
+    height: auto;
+    margin: 0.5em;
+    border-radius: 12px;
+    width: 90%;
+  }
+  .oglas-slika {
+    width: 10em;
+    display: flex;
+    height: 10em;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+  }
+  .oglas-slika img {
+    width: 100%;
+    height: 100%;
+  }
 }

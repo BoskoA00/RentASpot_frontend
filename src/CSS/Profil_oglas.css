@@ -69,3 +69,51 @@
 .profil-oglas-info-ime:hover {
   background-color: #ddf2fd;
 }
+@media only screen and (max-width: 768px) {
+  .profil-oglas {
+    border: 3px solid #9bbec8;
+    display: flex;
+    flex-direction: row;
+    float: left;
+    height: auto;
+    width: 80%;
+    margin: 1em;
+    border-radius: 12px;
+  }
+  .profil-oglas div {
+    font-size: 1.2rem;
+  }
+  .profil-oglas-slika {
+    width: 10em;
+    padding: 1em;
+    overflow: hidden;
+  }
+  .profil-oglas-slika img {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .profil-oglas {
+    border: 3px solid #9bbec8;
+    display: flex;
+    flex-direction: row;
+    float: left;
+    height: auto;
+    width: 90%;
+    margin: 0.5em;
+    border-radius: 12px;
+  }
+  .profil-oglas div {
+    font-size: 0.8rem;
+  }
+  .profil-oglas-slika {
+    width: 8em;
+    padding: 1em;
+    overflow: hidden;
+  }
+  .profil-oglas-slika img {
+    width: 90%;
+    height: 100%;
+  }
+}

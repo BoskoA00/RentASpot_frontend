@@ -33,7 +33,7 @@ const Oglas = (props) => {
         </div>
         <div className="oglas-info-velicina">{props.velicina} m^2</div>
         <div
-          className="profil-oglas-info-cena"
+          className="oglas-info-cena"
           style={
             isLightMode
               ? {}
@@ -49,7 +49,7 @@ const Oglas = (props) => {
                 ? {}
                 : { backgroundColor: "black", border: "1px solid black" }
             }
-            className="profil-oglas-info-cena"
+            className="oglas-info-cena"
           >
             Prodaja
           </div>
@@ -60,7 +60,7 @@ const Oglas = (props) => {
                 ? {}
                 : { backgroundColor: "black", border: "1px solid black" }
             }
-            className="profil-oglas-info-cena"
+            className="oglas-info-cena"
           >
             Izdavanje
           </div>

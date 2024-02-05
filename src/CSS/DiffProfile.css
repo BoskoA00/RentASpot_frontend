@@ -121,4 +121,70 @@
   .profil-data-image {
     margin-left: 10%;
   }
+  .profil-dugmad-dp {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .profil-main-1 {
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profil-dugmad-dp {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .profil-dugmad-dp div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    padding-left: 1.2em;
+    margin: 0.5em;
+  }
+  .profil-data-image {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    overflow: hidden;
+  }
+  .profil-data-image img {
+    height: 100%;
+    width: 100%;
+  }
+  .podaci {
+    flex-direction: column;
+  }
+  .profil-data-info div {
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  .profil-oglasi {
+    padding-left: 1rem;
+  }
+
+  .profil-main-2 {
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+  }
+  .profil-oglasi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 1em;
+  }
+  .profil-data-image {
+    margin-left: 10%;
+  }
 }
