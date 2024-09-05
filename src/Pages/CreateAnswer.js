@@ -28,7 +28,7 @@ const CreateAnswer = () => {
     }
     try {
       const response = await axios.post(
-        "http://boskowindows-001-site1.anytempurl.com/api/Question/Answers",
+        process.env.REACT_APP_API_URL + "api/Question/Answers",
         {
           content: text,
           questionId: id,

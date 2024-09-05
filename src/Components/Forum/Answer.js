@@ -13,7 +13,7 @@ const Answer = (props) => {
   const PokupiKorisnika = async () => {
     try {
       const response = await axios.get(
-        `http://boskowindows-001-site1.anytempurl.com/api/User/${props.userId}`
+        process.env.REACT_APP_API_URL + `api/User/${props.userId}`
       );
       setKorisnik(response.data);
     } catch (e) {

@@ -14,7 +14,7 @@ const Forum = () => {
   const pokupiPitanja = async () => {
     try {
       const response = await axios.get(
-        "http://boskowindows-001-site1.anytempurl.com/api/Question"
+        process.env.REACT_APP_API_URL + "api/Question"
       );
       setQuestions(response.data);
     } catch (e) {

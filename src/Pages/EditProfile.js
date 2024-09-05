@@ -23,16 +23,13 @@ const EditProfile = () => {
   }, [user, navigate]);
   const handleSubmit = async () => {
     try {
-      const resp = await axios.put(
-        "http://boskowindows-001-site1.anytempurl.com/api/User",
-        {
-          id: korisnik.id,
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-        }
-      );
+      const resp = await axios.put(process.env.REACT_APP_API_URL + "api/User", {
+        id: korisnik.id,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      });
       navigate(`/user/${korisnik.id}`);
     } catch (e) {
       console.log("Error:" + e);
@@ -41,7 +38,7 @@ const EditProfile = () => {
   const PokupiKorisnika = async () => {
     try {
       const resp = await axios.get(
-        `http://boskowindows-001-site1.anytempurl.com/api/User/${id}`
+        process.env.REACT_APP_API_URL + `api/User/${id}`
       );
       setKorisnik(resp.data);
       setEmail(resp.data.email);
@@ -56,7 +53,6 @@ const EditProfile = () => {
     setEmail(korisnik.email);
     setFirstName(korisnik.firstName);
     setLastName(korisnik.lastName);
-    console.log(korisnik);
   }, []);
   return (
     <div

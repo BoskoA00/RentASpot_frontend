@@ -29,7 +29,7 @@ export default function Opcije(props) {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `http://boskowindows-001-site1.anytempurl.com/api/Question/${props.id}`
+        process.env.REACT_APP_API_URL + `api/Question/${props.id}`
       );
       props.pokupiPitanja();
     } catch (e) {

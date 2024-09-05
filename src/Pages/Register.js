@@ -101,7 +101,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://boskowindows-001-site1.anytempurl.com/api/User/register",
+        process.env.REACT_APP_API_URL + "api/User/register",
         formData,
         {
           headers: {

@@ -38,14 +38,11 @@ const CreateQuestion = () => {
     }
 
     try {
-      await axios.post(
-        "http://boskowindows-001-site1.anytempurl.com/api/Question",
-        {
-          title: title,
-          content: content,
-          userId: user.id,
-        }
-      );
+      await axios.post(process.env.REACT_APP_API_URL + "api/Question", {
+        title: title,
+        content: content,
+        userId: user.id,
+      });
       navigate("/forum");
     } catch (e) {
       console.log("Error:" + e);

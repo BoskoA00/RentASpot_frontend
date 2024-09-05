@@ -9,7 +9,6 @@ const MyNavigation = () => {
   const { isLightMode, setIsLightModeFunction, user, setUserFunction } =
     useContext(AuthContext);
   const isSmallScreen = useMediaQuery("(max-width: 800px)");
-
   const navigate = useNavigate();
   const logoutUserHandler = () => {
     setUserFunction(null);

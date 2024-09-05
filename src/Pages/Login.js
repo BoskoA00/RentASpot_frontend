@@ -39,7 +39,7 @@ const Login = () => {
       setLoading(true);
 
       const response = await Axios.post(
-        "http://boskowindows-001-site1.anytempurl.com/api/User/login",
+        process.env.REACT_APP_API_URL + "api/User/login",
         {
           email: Email,
           password: Password,

@@ -18,7 +18,7 @@ const Profil = () => {
   const PokupiNoveOglase = async () => {
     try {
       const response = await Axios.get(
-        `http://boskowindows-001-site1.anytempurl.com/OglasiByUser/${user.id}`
+        process.env.REACT_APP_API_URL + `api/AdsByUser/${user.id}`
       );
       const noviOglasi = response.data;
       setUserOglasi(noviOglasi);
@@ -31,11 +31,8 @@ const Profil = () => {
   }, []);
   const HandleDelete = async () => {
     try {
-      await Axios.delete(
-        `http://boskowindows-001-site1.anytempurl.com/api/User/${user.id}`
-      );
+      await Axios.delete(process.env.REACT_APP_API_URL + `api/User/${user.id}`);
 
-      Axios.defaults.headers.common["Authorization"] = "";
       localStorage.removeItem("user");
       localStorage.removeItem("token");
       setUserFunction(null);
@@ -60,7 +57,7 @@ const Profil = () => {
         <div className="podaci-m">
           <div className="profil-data-image-m">
             <img
-              src={`http://boskowindows-001-site1.anytempurl.com/Images/${user.imageName}`}
+              src={process.env.REACT_APP_API_URL + `Images/${user.imageName}`}
               alt={user.imageName}
             />
           </div>
@@ -168,8 +165,8 @@ const Profil = () => {
             className="profil-oglasi-m"
             style={isLightMode ? {} : { border: "3px solid white" }}
           >
-            {user.oglasi && user.oglasi.length > 0 ? (
-              user.oglasi.map((oglas) => {
+            {user.ads && user.ads.length > 0 ? (
+              user.ads.map((oglas) => {
                 return (
                   <Oglas
                     key={oglas.id}

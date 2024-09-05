@@ -22,7 +22,7 @@ const EditQuestion = () => {
   const PokupiPitanje = async () => {
     try {
       const response = await axios.get(
-        `http://boskowindows-001-site1.anytempurl.com/api/Question/${Qid}`
+        process.env.REACT_APP_API_URL + `api/Question/${Qid}`
       );
       setTitle(response.data.title);
       setContent(response.data.content);
@@ -38,13 +38,10 @@ const EditQuestion = () => {
   };
   const handleSubmit = async () => {
     try {
-      await axios.put(
-        `http://boskowindows-001-site1.anytempurl.com/api/Question/${Qid}`,
-        {
-          title: title,
-          content: content,
-        }
-      );
+      await axios.put(process.env.REACT_APP_API_URL + `api/Question/${Qid}`, {
+        title: title,
+        content: content,
+      });
       navigate("/forum");
     } catch (e) {
       console.log("Error:" + e);

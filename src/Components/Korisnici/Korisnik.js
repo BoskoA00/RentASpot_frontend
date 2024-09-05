@@ -9,7 +9,7 @@ const Korisnik = (props) => {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `http://boskowindows-001-site1.anytempurl.com/api/User/${props.id}`
+        process.env.REACT_APP_API_URL + `api/User/${props.id}`
       );
       props.function();
     } catch (e) {
@@ -27,7 +27,7 @@ const Korisnik = (props) => {
     >
       <div className="korisnik-slika">
         <img
-          src={`http://boskowindows-001-site1.anytempurl.com/Images/${props.imageName}`}
+          src={process.env.REACT_APP_API_URL + `Images/${props.imageName}`}
           alt={`${props.img}`}
         />
       </div>

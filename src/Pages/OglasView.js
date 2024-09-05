@@ -16,7 +16,7 @@ const OglasView = () => {
   const PokupiOgas = async () => {
     try {
       const response = await Axios.get(
-        `http://boskowindows-001-site1.anytempurl.com/api/Oglas/${id}`
+        process.env.REACT_APP_API_URL + `api/Ad/${id}`
       );
       setOglas(response.data);
     } catch (e) {
@@ -26,9 +26,7 @@ const OglasView = () => {
 
   const handleDelete = async () => {
     try {
-      await Axios.delete(
-        `http://boskowindows-001-site1.anytempurl.com/api/Oglas/${oglas.id}`
-      );
+      await Axios.delete(process.env.REACT_APP_API_URL + `api/Ad/${oglas.id}`);
       navigate("/home");
     } catch (e) {
       console.log("Error" + e);
@@ -49,7 +47,7 @@ const OglasView = () => {
       >
         <div className="oglasView-page-form-1">
           <img
-            src={`http://boskowindows-001-site1.anytempurl.com/Oglasi/${oglas.picturePath}`}
+            src={process.env.REACT_APP_API_URL + `Ads/${oglas.picturePath}`}
           />
         </div>
         <div className="oglasView-page-form-2">

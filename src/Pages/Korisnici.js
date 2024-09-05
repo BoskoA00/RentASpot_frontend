@@ -24,7 +24,7 @@ const Korisnici = () => {
   const PokupiKorisnike = async () => {
     try {
       const response = await axios.get(
-        "http://boskowindows-001-site1.anytempurl.com/api/User"
+        process.env.REACT_APP_API_URL + "api/User"
       );
       setKorisnici(response.data);
     } catch (e) {

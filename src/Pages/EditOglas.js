@@ -30,7 +30,7 @@ const Oglas = () => {
   const PokupiOgas = async () => {
     try {
       const response = await Axios.get(
-        `http://boskowindows-001-site1.anytempurl.com/api/Oglas/${id}`
+        process.env.REACT_APP_API_URL + `api/Ad/${id}`
       );
       setVlasnikId(response.data.id);
       setTitle(response.data.title);
@@ -47,7 +47,7 @@ const Oglas = () => {
   const onSubmitHandle = async (e) => {
     try {
       const response = await Axios.put(
-        `http://boskowindows-001-site1.anytempurl.com/api/Oglas/${id}`,
+        process.env.REACT_APP_API_URL + `api/Ad/${id}`,
         {
           Title: Title,
           City: City,
@@ -83,9 +83,7 @@ const Oglas = () => {
   };
   const deleteOglas = async () => {
     try {
-      await Axios.delete(
-        `http://boskowindows-001-site1.anytempurl.com/api/Oglas/${id}`
-      );
+      await Axios.delete(process.env.REACT_APP_API_URL + `api/Ad/${id}`);
       navigate("/home");
     } catch (e) {
       console.log("Error:" + e);

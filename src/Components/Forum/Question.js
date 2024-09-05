@@ -22,7 +22,9 @@ const Question = (props) => {
         <div className="user_info">
           <div className="question-user-image">
             <img
-              src={`http://boskowindows-001-site1.anytempurl.com/Images/${props.user.imageName}`}
+              src={
+                process.env.REACT_APP_API_URL + `Images/${props.user.imageName}`
+              }
               alt={props.user.imageName}
             />
           </div>

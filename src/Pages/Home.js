@@ -6,20 +6,21 @@ import { AuthContext } from "../Context/AuthContext";
 import ".././CSS/Home.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-const Pocetna = ({ onSearchComplete }) => {
+
+const Pocetna = () => {
   const { isLightMode } = useContext(AuthContext);
   const [oglasi, setOglasi] = useState([]);
   const [filteredOglasi, setFilteredOglasi] = useState([]);
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
   const PokupiOglase = async () => {
     try {
       const response = await Axios.get(
-        "http://boskowindows-001-site1.anytempurl.com/api/Oglas"
+        process.env.REACT_APP_API_URL + "api/Ad"
       );
       setOglasi(response.data);
+      setFilteredOglasi(response.data);
     } catch (e) {
       console.log("Error:" + e);
     }
@@ -27,8 +28,9 @@ const Pocetna = ({ onSearchComplete }) => {
 
   useEffect(() => {
     PokupiOglase();
-  }, [filteredOglasi]);
-  const handleSearch = async (searchParams) => {
+  }, []);
+
+  const handleSearch = (searchParams) => {
     const filteredResults = oglasi.filter((oglas) => {
       const matchesDrzava =
         !searchParams.drzava || oglas.country.includes(searchParams.drzava);
@@ -49,24 +51,15 @@ const Pocetna = ({ onSearchComplete }) => {
         matchesMaxCena
       );
     });
-    if (filteredResults.length > 0) {
-      setOglasi(filteredResults);
-    } else {
-      try {
-        const response = await Axios.get(
-          "http://boskowindows-001-site1.anytempurl.com/api/Oglas"
-        );
-        setOglasi(response.data);
-      } catch (e) {
-        console.log("Error:" + e);
-      }
-    }
+
+    setFilteredOglasi(filteredResults);
     setCurrentPage(1);
   };
-  const totalPages = Math.ceil(oglasi.length / itemsPerPage);
+
+  const totalPages = Math.ceil(filteredOglasi.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentOglasi = oglasi.slice(indexOfFirstItem, indexOfLastItem);
+  const currentOglasi = filteredOglasi.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -86,24 +79,23 @@ const Pocetna = ({ onSearchComplete }) => {
           {currentOglasi.length === 0 ? (
             <div style={{ textAlign: "center" }}>Nema oglasa</div>
           ) : (
-            ""
+            currentOglasi.map((oglas) => (
+              <Oglas
+                key={oglas.id}
+                id={oglas.id}
+                ime={oglas.title}
+                grad={oglas.country}
+                drzava={oglas.city}
+                velicina={oglas.size}
+                cena={oglas.price}
+                type={oglas.type}
+                picturePath={oglas.picturePath}
+              />
+            ))
           )}
-          {currentOglasi.map((oglas) => (
-            <Oglas
-              key={oglas.id}
-              id={oglas.id}
-              ime={oglas.title}
-              grad={oglas.country}
-              drzava={oglas.city}
-              velicina={oglas.size}
-              cena={oglas.price}
-              type={oglas.type}
-              picturePath={oglas.picturePath}
-            />
-          ))}
         </div>
 
-        {currentOglasi.length !== 0 && (
+        {filteredOglasi.length !== 0 && (
           <div className="pagination-controls">
             <div className="pag-divs">
               <div>

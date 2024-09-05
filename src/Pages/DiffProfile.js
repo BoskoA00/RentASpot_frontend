@@ -16,7 +16,7 @@ const DiffProfil = () => {
   const PokupiKorisnika = async () => {
     try {
       const response = await axios.get(
-        `http://boskowindows-001-site1.anytempurl.com/api/User/${id}`
+        process.env.REACT_APP_API_URL + `api/User/${id}`
       );
       setKorisnik(response.data);
     } catch (e) {
@@ -25,9 +25,7 @@ const DiffProfil = () => {
   };
   const HandleDelete = async () => {
     try {
-      await axios.delete(
-        `http://boskowindows-001-site1.anytempurl.com/api/User/${id}`
-      );
+      await axios.delete(process.env.REACT_APP_API_URL + `api/User/${id}`);
 
       navigate("/home");
     } catch (e) {
@@ -50,7 +48,9 @@ const DiffProfil = () => {
         >
           <div className="profil-data-image">
             <img
-              src={`http://boskowindows-001-site1.anytempurl.com/Images/${Korisnik.imageName}`}
+              src={
+                process.env.REACT_APP_API_URL + `Images/${Korisnik.imageName}`
+              }
               alt={Korisnik.imageName}
             />
           </div>
@@ -135,10 +135,10 @@ const DiffProfil = () => {
               <h2>Oglasi korisnika</h2>
             </div>
             <div className="profil-oglasi">
-              {Korisnik.oglasi.length === 0 ? (
+              {Korisnik && Korisnik.ads && Korisnik.ads.length === 0 ? (
                 <div>Ovaj korisnik nema oglase koje je postavio</div>
               ) : (
-                Korisnik.oglasi.map((oglas) => {
+                Korisnik.ads.map((oglas) => {
                   return (
                     <Oglas
                       key={oglas.id}

@@ -11,7 +11,7 @@ const Oglas = (props) => {
     >
       <div className="oglas-slika">
         <img
-          src={`http://boskowindows-001-site1.anytempurl.com/Oglasi/${props.picturePath}`}
+          src={process.env.REACT_APP_API_URL + `Ads/${props.picturePath}`}
           alt={`${props.picturePath}`}
         />
       </div>
