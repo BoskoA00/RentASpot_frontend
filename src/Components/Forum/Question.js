@@ -39,7 +39,7 @@ const Question = (props) => {
             <div>
               <Opcije
                 id={props.id}
-                pokupiPitanja={props.pokupiPitanja}
+                getQuestions={props.getQuestions}
                 userId={props.userId}
               />
             </div>
@@ -77,7 +77,7 @@ const Question = (props) => {
               user={answer.user}
               content={answer.content}
               userId={answer.userId}
-              pokupiPitanja={props.pokupiPitanja}
+              getQuestions={props.getQuestions}
             />
           );
         })}

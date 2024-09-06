@@ -1,0 +1,244 @@
+.oglasView-page-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 1000px;
+}
+.oglasView-page-form {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 60%;
+  border: 3px solid #427d9d;
+  border-radius: 15px;
+  background-color: #427d9d;
+  padding: 1.5em;
+}
+.oglasView-page-form-1 {
+  width: 30%;
+  margin-left: 1em;
+  margin-right: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.oglasView-page-form-1 img {
+  height: 90%;
+  width: 100%;
+}
+.oglasView-page-form-2 {
+  border: 1px solid #ddf2fd;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  justify-content: space-evenly;
+  padding-left: 1em;
+}
+.oglasView-title {
+  font-size: 2rem;
+  border-bottom: 3px solid black;
+  width: 90%;
+  border-radius: 15px;
+  padding-left: 0.5em;
+}
+.oglasView-cc {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid black;
+  width: 90%;
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+  border-radius: 15px;
+}
+.oglasView-ps {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.oglasView-price {
+  border-bottom: 1px solid black;
+  margin-bottom: 1em;
+  width: 90%;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  padding-left: 1.5em;
+}
+.oglasView-size {
+  border-bottom: 1px solid black;
+  margin-bottom: 1em;
+  width: 90%;
+  border-radius: 15px;
+  padding-left: 1.5em;
+
+  font-size: 1.5rem;
+}
+.oglasView-user {
+  font-size: 1.5rem;
+  padding-left: 1.5em;
+}
+.oglasView-buttons {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  width: 30%;
+}
+.oglasView-editB {
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+.oglasView-deleteB {
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+.oglasView-deleteB Button {
+  background-color: red;
+}
+.link {
+  text-decoration: none;
+  color: black;
+}
+.link:hover {
+  color: #ddf2fd;
+  transition: 1s;
+}
+@media only screen and (max-width: 768px) {
+  .oglasView-page-form {
+    width: 70%;
+  }
+  .oglasView-page-form-1 {
+    width: 12em;
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .oglasView-page-form-1 img {
+    height: 90%;
+    width: 100%;
+  }
+  .oglasView-page-form-2 {
+    border: 1px solid #ddf2fd;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    justify-content: space-evenly;
+    padding-left: 1em;
+  }
+  .oglasView-title {
+    font-size: 1.5rem;
+    border-bottom: 3px solid black;
+    width: 90%;
+    border-radius: 15px;
+    padding-left: 0.5em;
+  }
+  .oglasView-cc {
+    margin-top: 1rem;
+    font-size: 1rem;
+    border-bottom: 1px solid black;
+    width: 90%;
+    margin-bottom: 1em;
+    padding-left: 1.5em;
+    border-radius: 15px;
+  }
+  .oglasView-ps {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .oglasView-price {
+    border-bottom: 1px solid black;
+    margin-bottom: 1em;
+    width: 90%;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding-left: 1.5em;
+  }
+  .oglasView-size {
+    border-bottom: 1px solid black;
+    margin-bottom: 1em;
+    width: 90%;
+    border-radius: 15px;
+    padding-left: 1.5em;
+    font-size: 1rem;
+  }
+  .oglasView-user {
+    font-size: 1.2rem;
+    padding-left: 1.5em;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .oglasView-page-form {
+    width: 85%;
+    padding: 0.5em;
+  }
+  .oglasView-page-form-1 {
+    width: 10em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .oglasView-page-form-1 img {
+    height: 85%;
+    width: 100%;
+  }
+  .oglasView-page-form-2 {
+    border: 1px solid #ddf2fd;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    justify-content: space-evenly;
+    padding-left: 0em;
+  }
+  .oglasView-title {
+    font-size: 1rem;
+    border-bottom: 3px solid black;
+    width: 80%;
+    border-radius: 15px;
+    padding-left: 0.5em;
+  }
+  .oglasView-cc {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    border-bottom: 1px solid black;
+    width: 80%;
+    margin-bottom: 1em;
+    padding-left: 1.5em;
+    border-radius: 15px;
+  }
+  .oglasView-ps {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .oglasView-price {
+    border-bottom: 1px solid black;
+    margin-bottom: 1em;
+    width: 80%;
+    font-size: 0.8rem;
+    border-radius: 15px;
+    padding-left: 1.5em;
+  }
+  .oglasView-size {
+    border-bottom: 1px solid black;
+    margin-bottom: 1em;
+    width: 80%;
+    border-radius: 15px;
+    padding-left: 1.5em;
+    font-size: 0.8rem;
+  }
+  .oglasView-user {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+}

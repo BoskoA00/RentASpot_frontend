@@ -9,9 +9,9 @@ const Forum = () => {
   const { isLightMode, user } = useContext(AuthContext);
   const [Questions, setQuestions] = useState([]);
   useEffect(() => {
-    pokupiPitanja();
+    getQuestions();
   }, []);
-  const pokupiPitanja = async () => {
+  const getQuestions = async () => {
     try {
       const response = await axios.get(
         process.env.REACT_APP_API_URL + "api/Question"
@@ -56,7 +56,7 @@ const Forum = () => {
             answers={question.answers}
             userId={question.userId}
             imageName={question.user.imageName}
-            pokupiPitanja={pokupiPitanja}
+            getQuestions={getQuestions}
           />
         );
       })}

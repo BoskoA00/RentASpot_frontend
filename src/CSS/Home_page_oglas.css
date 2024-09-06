@@ -1,4 +1,4 @@
-.oglas {
+.ad {
   border: 3px solid #9bbec8;
   display: flex;
   flex-direction: row;
@@ -7,7 +7,7 @@
   margin: 1em;
   border-radius: 12px;
 }
-.oglas-slika {
+.ad-image {
   width: 20em;
   display: flex;
   flex-direction: column;
@@ -16,11 +16,11 @@
   align-items: center;
   margin: 0.5em;
 }
-.oglas-slika img {
+.ad-image img {
   width: 80%;
   height: 90%;
 }
-.oglas-info {
+.ad-info {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -28,7 +28,7 @@
   padding: 0.5rem;
   padding-top: 1.5em;
 }
-.oglas-info-ime {
+.ad-info-name {
   margin-bottom: 0.5em;
   font-size: 12pt;
   border: 1px solid #427d9d;
@@ -37,25 +37,25 @@
   color: white;
   padding-left: 0.5rem;
 }
-.oglas-info-ime a {
+.ad-info-name a {
   text-decoration: none;
   color: white;
 }
-.oglas-info-ime,
-.oglas-info-ime a:hover {
+.ad-info-name,
+.ad-info-name a:hover {
   color: #ddf2fd;
 }
-.oglas-info-grad-drzava {
+.ad-info-city-country {
   font-size: 15pt;
   margin-bottom: 0.5rem;
   padding-left: 0.5rem;
 }
-.oglas-info-velicina {
+.ad-info-size {
   font-size: 15pt;
   margin-bottom: 0.5rem;
   padding-left: 0.5rem;
 }
-.oglas-info-cena {
+.ad-info-price {
   font-weight: bold;
   font-size: 24pt;
   text-align: left;
@@ -67,7 +67,7 @@
   margin-top: 0.5rem;
 }
 @media only screen and (max-width: 768px) {
-  .oglas {
+  .ad {
     border: 3px solid #9bbec8;
     display: flex;
     flex-direction: row;
@@ -76,7 +76,7 @@
     margin: 1em;
     border-radius: 12px;
   }
-  .oglas-slika {
+  .ad-image {
     width: 10em;
     display: flex;
     flex-direction: column;
@@ -84,11 +84,11 @@
     overflow: hidden;
     align-items: center;
   }
-  .oglas-slika img {
+  .ad-image img {
     width: 80%;
     height: 90%;
   }
-  .oglas-info {
+  .ad-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,7 +97,7 @@
     padding-top: 0.5em;
     font-size: 1.5rem;
   }
-  .oglas-info-ime {
+  .ad-info-name {
     margin-bottom: 0.5em;
     font-size: 10pt;
     border: 1px solid #427d9d;
@@ -106,17 +106,17 @@
     color: white;
     padding-left: 0.5rem;
   }
-  .oglas-info-grad-drzava {
+  .ad-info-city-country {
     font-size: 12pt;
     margin-bottom: 0.5rem;
     padding-left: 0.5rem;
   }
-  .oglas-info-velicina {
+  .ad-info-size {
     font-size: 12pt;
     margin-bottom: 0.5rem;
     padding-left: 0.5rem;
   }
-  .oglas-info-cena {
+  .ad-info-price {
     font-weight: bold;
     font-size: 15pt;
     text-align: left;
@@ -129,7 +129,7 @@
   }
 }
 @media only screen and (max-width: 650px) {
-  .oglas {
+  .ad {
     border: 3px solid #9bbec8;
     display: flex;
     flex-direction: row;
@@ -139,7 +139,7 @@
     border-radius: 12px;
     width: 90%;
   }
-  .oglas-slika {
+  .ad-image {
     width: 10em;
     display: flex;
     height: 10em;
@@ -148,7 +148,7 @@
     overflow: hidden;
     align-items: center;
   }
-  .oglas-slika img {
+  .ad-image img {
     width: 100%;
     height: 100%;
   }

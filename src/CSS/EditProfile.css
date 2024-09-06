@@ -16,21 +16,21 @@
   height: auto;
   justify-content: space-evenly;
 }
-.ImeiPrezime {
+.firstNameAndLastName {
   display: flex;
   flex-direction: row;
   padding: 0.5em;
   justify-content: space-around;
   height: 20%;
 }
-.Ime {
+.firstName {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
   justify-content: center;
   width: 50%;
 }
-.Prezime {
+.lastName {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
@@ -55,7 +55,7 @@
 .password div {
   width: 90%;
 }
-.dugme {
+.button {
   margin: 3em;
   width: 20%;
 }
@@ -63,7 +63,7 @@
   .editProfile-form {
     width: 80%;
   }
-  .dugme {
+  .button {
     width: 30%;
   }
 }
@@ -81,7 +81,7 @@
     flex-direction: column;
     justify-content: center;
   }
-  .ImeiPrezime {
+  .firstNameAndLastName {
     display: flex;
     flex-direction: column;
     justify-content: center;

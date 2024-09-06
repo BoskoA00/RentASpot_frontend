@@ -38,11 +38,19 @@ const CreateQuestion = () => {
     }
 
     try {
-      await axios.post(process.env.REACT_APP_API_URL + "api/Question", {
-        title: title,
-        content: content,
-        userId: user.id,
-      });
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      await axios.post(
+        process.env.REACT_APP_API_URL + "api/Question",
+        {
+          title: title,
+          content: content,
+          userId: user.id,
+        },
+        { headers }
+      );
       navigate("/forum");
     } catch (e) {
       console.log("Error:" + e);

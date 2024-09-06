@@ -12,7 +12,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 
-export default function Opcije(props) {
+export default function Options(props) {
   const { user, isLightMode } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -28,10 +28,16 @@ export default function Opcije(props) {
 
   const handleDelete = async () => {
     try {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
       await axios.delete(
-        process.env.REACT_APP_API_URL + `api/Question/${props.id}`
+        process.env.REACT_APP_API_URL + `api/Question/${props.id}`,
+        { headers }
       );
-      props.pokupiPitanja();
+      props.getQuestions();
     } catch (e) {
       console.log("Error:" + e);
     }

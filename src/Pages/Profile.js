@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import Oglas from "../Components/Profil/Oglas";
+import Ad from "../Components/Profil/Ad";
 import { AuthContext } from "../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -15,7 +15,7 @@ const Profil = () => {
     }
   }, [navigate, user]);
 
-  const PokupiNoveOglase = async () => {
+  const getNewAds = async () => {
     try {
       const response = await Axios.get(
         process.env.REACT_APP_API_URL + `api/AdsByUser/${user.id}`
@@ -27,11 +27,19 @@ const Profil = () => {
     }
   };
   useEffect(() => {
-    PokupiNoveOglase();
+    getNewAds();
   }, []);
   const HandleDelete = async () => {
     try {
-      await Axios.delete(process.env.REACT_APP_API_URL + `api/User/${user.id}`);
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      await Axios.delete(
+        process.env.REACT_APP_API_URL + `api/User/${user.id}`,
+        { headers }
+      );
 
       localStorage.removeItem("user");
       localStorage.removeItem("token");
@@ -168,7 +176,7 @@ const Profil = () => {
             {user.ads && user.ads.length > 0 ? (
               user.ads.map((oglas) => {
                 return (
-                  <Oglas
+                  <Ad
                     key={oglas.id}
                     id={oglas.id}
                     ime={oglas.title}

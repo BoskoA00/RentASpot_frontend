@@ -7,26 +7,26 @@ import { AuthContext } from "../Context/AuthContext";
 import "../CSS/Register.css";
 import { useNavigate } from "react-router-dom";
 const Register = () => {
-  const [ime, setIme] = useState("");
-  const [imeError, setImeError] = useState("");
-  const [prezimeError, setPrezimeError] = useState("");
-  const [prezime, setPrezime] = useState("");
+  const [FirstName, setFirstName] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
-  const [lozinkaError, setLozinkaError] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [proveraLozinke, setProveraLozinke] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordCheck, setPasswordCheck] = useState("");
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
-  const [tip, setTip] = useState(1);
+  const [type, setType] = useState(1);
   const { isLightMode, setUserFunction } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleFName = (e) => {
-    setIme(e.target.value);
+    setFirstName(e.target.value);
   };
   const handleLName = (e) => {
-    setPrezime(e.target.value);
+    setLastName(e.target.value);
   };
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -41,27 +41,27 @@ const Register = () => {
     setPassword(e.target.value);
   };
   const handlePassword1 = (e) => {
-    setPassword1(e.target.value);
+    setConfirmPassword(e.target.value);
   };
   const PromenaSlike = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
   const handleTipPromena = (e) => {
-    setTip(e.target.value);
+    setType(e.target.value);
   };
   const handleRegister = async () => {
-    if (ime.trim() === "") {
-      setImeError("Morate popuniti ovo polje");
+    if (FirstName.trim() === "") {
+      setFirstNameError("Morate popuniti ovo polje");
       return;
     } else {
-      setImeError("");
+      setFirstNameError("");
     }
-    if (prezime.trim() === "") {
-      setPrezimeError("Morate popuniti ovo polje");
+    if (lastName.trim() === "") {
+      setLastNameError("Morate popuniti ovo polje");
       return;
     } else {
-      setPrezimeError("");
+      setLastNameError("");
     }
 
     if (!isValidEmail(email)) {
@@ -73,20 +73,20 @@ const Register = () => {
       setEmailError("");
     }
     if (password.length < 6) {
-      setLozinkaError("Lozinka je prekratka. Mora imati 6 ili vise karaktera");
+      setPasswordError("Lozinka je prekratka. Mora imati 6 ili vise karaktera");
       return;
     } else {
-      setLozinkaError("");
+      setPasswordError("");
     }
-    if (password1 !== password) {
-      setProveraLozinke("Lozinke nisu iste");
+    if (confirmPassword !== password) {
+      setPasswordCheck("Lozinke nisu iste");
       return;
     } else {
-      setProveraLozinke("");
+      setPasswordCheck("");
     }
     const formData = new FormData();
-    formData.append("FirstName", ime);
-    formData.append("LastName", prezime);
+    formData.append("FirstName", FirstName);
+    formData.append("LastName", lastName);
     formData.append("Email", email);
     formData.append("Password", password);
     if (file === null || file === undefined) {
@@ -97,7 +97,7 @@ const Register = () => {
       formData.append("Image", file);
       formData.append("ImageName", fileName);
     }
-    formData.append("Role", tip);
+    formData.append("Role", type);
 
     try {
       const response = await axios.post(
@@ -111,16 +111,13 @@ const Register = () => {
         }
       );
       const responseData = response.data;
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${responseData.token}`;
       setUserFunction(responseData.user);
       localStorage.setItem("user", JSON.stringify(responseData.user));
       navigate("/home");
     } catch (e) {
       if (e.response.data.message === "Postoji već korisnik sa ovim imenom")
         setEmailError(e.response.data.message);
-      else setLozinkaError(e.response.data.message);
+      else setPasswordError(e.response.data.message);
     }
   };
   return (
@@ -132,15 +129,15 @@ const Register = () => {
         className="register-container-main"
         style={isLightMode ? {} : { backgroundColor: "black" }}
       >
-        <div className="register-ime-prezime">
-          <div className="register-ime">
+        <div className="register-firstName-lastName">
+          <div className="register-firstName">
             <div
-              className="register-ime-label"
+              className="register-firstName-label"
               style={isLightMode ? {} : { color: "white" }}
             >
               <h2>Ime:</h2>
             </div>
-            <div className="register-ime-input">
+            <div className="register-firstName-input">
               <input
                 style={
                   isLightMode
@@ -153,19 +150,19 @@ const Register = () => {
             </div>
             <div
               style={isLightMode ? {} : { color: "white" }}
-              className="ime-Error"
+              className="firstName-Error"
             >
-              {imeError}
+              {firstNameError}
             </div>
           </div>
-          <div className="register-prezime">
+          <div className="register-lastName">
             <div
-              className="register-prezime-label"
+              className="register-lastName-label"
               style={isLightMode ? {} : { color: "white" }}
             >
               <h2>Prezime:</h2>
             </div>
-            <div className="register-prezime-input">
+            <div className="register-lastName-input">
               <input
                 style={
                   isLightMode
@@ -178,9 +175,9 @@ const Register = () => {
             </div>
             <div
               style={isLightMode ? {} : { color: "white" }}
-              className="prezime-Error"
+              className="lastName-Error"
             >
-              {prezimeError}
+              {lastNameError}
             </div>
           </div>
         </div>
@@ -233,7 +230,7 @@ const Register = () => {
             className="register-neispravna-lozinka"
             style={isLightMode ? {} : { color: "white" }}
           >
-            {lozinkaError}
+            {passwordError}
           </div>
         </div>
         <div
@@ -258,7 +255,7 @@ const Register = () => {
             style={isLightMode ? {} : { color: "white" }}
             className="register-neispravna-potvrda"
           >
-            {proveraLozinke}
+            {passwordCheck}
           </div>
         </div>
         <div
@@ -292,8 +289,8 @@ const Register = () => {
                   ? {}
                   : { backgroundColor: "#202020", color: "white" }
               }
-              defaultValue={tip}
-              value={tip}
+              defaultValue={type}
+              value={type}
               onChange={handleTipPromena}
             >
               <option value={0}>Kupac</option>

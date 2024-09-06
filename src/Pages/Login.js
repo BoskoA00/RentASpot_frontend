@@ -45,14 +45,11 @@ const Login = () => {
           password: Password,
         }
       );
-      const responseData = response.data;
-      Axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${responseData.token}`;
 
-      setUserFunction(responseData.user);
+      setUserFunction(response.data.user);
 
-      localStorage.setItem("user", JSON.stringify(responseData.user));
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", response.data.token);
       navigate("/home");
     } catch (e) {
       if (e.response.data.message === "Ne postoji ovaj korisnik")

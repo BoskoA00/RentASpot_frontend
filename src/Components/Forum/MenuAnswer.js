@@ -9,7 +9,7 @@ import "../../CSS/Question.css";
 import axios from "axios";
 import { AuthContext } from "../../Context/AuthContext";
 
-export default function OpcijeOdgovora(props) {
+export default function AnswerOptions(props) {
   const { isLightMode } = React.useContext(AuthContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -22,8 +22,13 @@ export default function OpcijeOdgovora(props) {
   };
   const handleDelete = async () => {
     try {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
       await axios.delete(
-        process.env.REACT_APP_API_URL + `api/Answer/${props.id}`
+        process.env.REACT_APP_API_URL + `api/Answer/${props.id}`,
+        { headers }
       );
       navigate("/forum");
     } catch (e) {

@@ -27,13 +27,18 @@ const CreateAnswer = () => {
       setTextError("");
     }
     try {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
       const response = await axios.post(
         process.env.REACT_APP_API_URL + "api/Question/Answers",
         {
           content: text,
           questionId: id,
           userId: user.id,
-        }
+        },
+        { headers }
       );
       navigate("/forum");
     } catch (e) {

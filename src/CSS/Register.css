@@ -17,15 +17,15 @@
   flex-direction: column;
 }
 
-.register-ime-prezime {
+.register-firstName-lastName {
   display: flex;
   flex-direction: row;
   justify-content: space-between; /* Updated alignment */
   padding: 1rem;
 }
 
-.register-ime,
-.register-prezime,
+.register-firstName,
+.register-lastName,
 .register-mail-input,
 .register-lozinka-input,
 .register-slika-input,
@@ -37,8 +37,8 @@
   color: #427d9d;
 }
 
-.register-ime-label,
-.register-prezime-label,
+.register-firstName-label,
+.register-lastName-label,
 .register-email-label,
 .register-lozinka-label,
 .register-slika-label,
@@ -49,8 +49,8 @@
   color: #427d9d;
 }
 
-.register-ime-input input,
-.register-prezime-input input,
+.register-firstName-input input,
+.register-lastName-input input,
 .register-mail-input input,
 .register-lozinka-input input,
 .register-slika-input input,
@@ -77,8 +77,8 @@
   padding-left: 0.5rem;
   margin-top: 5px; /* Added margin for spacing */
 }
-.ime-Error,
-.prezime-Error {
+.firstName-Error,
+.lastName-Error {
   color: red;
   font-style: italic;
   font-size: 1rem;
@@ -112,7 +112,7 @@
   .register-container-main {
     width: 90%;
   }
-  .register-ime-prezime {
+  .register-firstName-lastName {
     display: flex;
     flex-direction: column;
   }

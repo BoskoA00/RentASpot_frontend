@@ -1,15 +1,20 @@
 import React, { useContext } from "react";
-import "../../CSS/Korisnik.css";
+import "../../CSS/User.css";
 import { Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import { AuthContext } from "../../Context/AuthContext";
-const Korisnik = (props) => {
+const User = (props) => {
   const { isLightMode } = useContext(AuthContext);
   const handleDelete = async () => {
     try {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
       await axios.delete(
-        process.env.REACT_APP_API_URL + `api/User/${props.id}`
+        process.env.REACT_APP_API_URL + `api/User/${props.id}`,
+        { headers }
       );
       props.function();
     } catch (e) {
@@ -83,4 +88,4 @@ const Korisnik = (props) => {
     </div>
   );
 };
-export default Korisnik;
+export default User;

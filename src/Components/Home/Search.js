@@ -4,21 +4,21 @@ import Button from "@mui/material/Button";
 import "../../CSS/Search.css";
 import { AuthContext } from "../../Context/AuthContext";
 
-const Pretraga = ({ onSearch }) => {
+const Search = ({ onSearch }) => {
   const { isLightMode } = useContext(AuthContext);
-  const [grad, setGrad] = useState("");
-  const [drzava, setDrzava] = useState("");
-  const [velicina, setVelicina] = useState(0);
-  const [maxCena, setMaxCena] = useState(0);
-  const [minCena, setMinCena] = useState(0);
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [size, setSize] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
+  const [minPrice, setMinPrice] = useState(0);
 
   const handleSearchClick = () => {
     const searchParams = {
-      grad,
-      drzava,
-      velicina,
-      maxCena,
-      minCena,
+      city,
+      country,
+      size,
+      maxPrice,
+      minPrice,
     };
     onSearch(searchParams);
   };
@@ -33,8 +33,8 @@ const Pretraga = ({ onSearch }) => {
         <div className="search-params-div-input">
           <input
             name="Drzava"
-            onChange={(e) => setDrzava(e.target.value)}
-            value={drzava}
+            onChange={(e) => setCountry(e.target.value)}
+            value={country}
           />
         </div>
       </div>
@@ -43,19 +43,19 @@ const Pretraga = ({ onSearch }) => {
         <div className="search-params-div-input">
           <input
             name="Grad"
-            onChange={(e) => setGrad(e.target.value)}
-            value={grad}
+            onChange={(e) => setCity(e.target.value)}
+            value={city}
           />
         </div>
       </div>
       <div className="search-params-div">
-        <div className="search-params-div-label">Maks.velicina(m^2):</div>
+        <div className="search-params-div-label">Maks.size(m^2):</div>
         <div className="search-params-div-input">
           <Slider
             name="Velicina"
             size="small"
-            value={velicina}
-            onChange={(e, newValue) => setVelicina(newValue)}
+            value={size}
+            onChange={(e, newValue) => setSize(newValue)}
             min={0}
             max={1000}
             valueLabelDisplay="on"
@@ -66,10 +66,10 @@ const Pretraga = ({ onSearch }) => {
         <div className="search-params-div-label">Max.cena:</div>
         <div className="search-params-div-input">
           <Slider
-            name="MaxCena"
+            name="MaxPrice"
             size="small"
-            value={maxCena}
-            onChange={(e, newValue) => setMaxCena(newValue)}
+            value={maxPrice}
+            onChange={(e, newValue) => setMaxPrice(newValue)}
             min={0}
             max={1000000}
             valueLabelDisplay="on"
@@ -80,10 +80,10 @@ const Pretraga = ({ onSearch }) => {
         <div className="search-params-div-label">Min.cena:</div>
         <div className="search-params-div-input">
           <Slider
-            name="MinCena"
+            name="MinPrice"
             size="small"
-            value={minCena}
-            onChange={(e, newValue) => setMinCena(newValue)}
+            value={minPrice}
+            onChange={(e, newValue) => setMinPrice(newValue)}
             min={0}
             max={10000}
             valueLabelDisplay="on"
@@ -108,4 +108,4 @@ const Pretraga = ({ onSearch }) => {
   );
 };
 
-export default Pretraga;
+export default Search;

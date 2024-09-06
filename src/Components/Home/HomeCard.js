@@ -6,18 +6,18 @@ const Oglas = (props) => {
   const { isLightMode } = useContext(AuthContext);
   return (
     <div
-      className="oglas"
+      className="ad"
       style={isLightMode ? {} : { border: "3px solid white" }}
     >
-      <div className="oglas-slika">
+      <div className="ad-image">
         <img
           src={process.env.REACT_APP_API_URL + `Ads/${props.picturePath}`}
           alt={`${props.picturePath}`}
         />
       </div>
-      <div className="oglas-info">
+      <div className="ad-info">
         <div
-          className="oglas-info-ime"
+          className="ad-info-name"
           style={
             isLightMode
               ? {}
@@ -25,22 +25,22 @@ const Oglas = (props) => {
           }
         >
           <Link to={`/Oglas/${props.id}`}>
-            <h1>{props.ime}</h1>
+            <h1>{props.name}</h1>
           </Link>
         </div>
-        <div className="oglas-info-grad-drzava">
-          {props.grad + "," + props.drzava}
+        <div className="ad-info-city-country">
+          {props.city + "," + props.country}
         </div>
-        <div className="oglas-info-velicina">{props.velicina} m^2</div>
+        <div className="ad-info-size">{props.size} m^2</div>
         <div
-          className="oglas-info-cena"
+          className="ad-info-price"
           style={
             isLightMode
               ? {}
               : { backgroundColor: "black", border: "1px solid black" }
           }
         >
-          {props.cena} e
+          {props.price} e
         </div>
         {props.type === 0 ? (
           <div
@@ -49,7 +49,7 @@ const Oglas = (props) => {
                 ? {}
                 : { backgroundColor: "black", border: "1px solid black" }
             }
-            className="oglas-info-cena"
+            className="ad-info-price"
           >
             Prodaja
           </div>
@@ -60,7 +60,7 @@ const Oglas = (props) => {
                 ? {}
                 : { backgroundColor: "black", border: "1px solid black" }
             }
-            className="oglas-info-cena"
+            className="ad-info-price"
           >
             Izdavanje
           </div>

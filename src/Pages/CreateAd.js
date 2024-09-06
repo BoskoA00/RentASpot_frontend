@@ -5,8 +5,8 @@ import { Button, FormControlLabel, Input, RadioGroup } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import FormData from "form-data";
 import Axios from "axios";
-import "../CSS/Create_oglas.css";
-const CreateOglas = () => {
+import "../CSS/Create_ad.css";
+const CreateAd = () => {
   const { user, isLightMode } = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [city, setCity] = useState("");
@@ -16,7 +16,7 @@ const CreateOglas = () => {
   const [type, setType] = useState(0);
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
-  const [vlasnikId, setVlasnikId] = useState(user.id);
+  const [ownerId, setOwnerId] = useState(user.id);
   const navigate = useNavigate();
   useEffect(() => {
     if (user === null) {
@@ -25,7 +25,7 @@ const CreateOglas = () => {
   }, []);
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    setVlasnikId(user.id);
+    setOwnerId(user.id);
     const formData = new FormData();
     formData.append("Title", title);
     formData.append("City", city);
@@ -35,9 +35,11 @@ const CreateOglas = () => {
     formData.append("Picture", file);
     formData.append("PicturePath", fileName);
     formData.append("Type", type);
-    formData.append("UserId", vlasnikId);
+    formData.append("UserId", ownerId);
 
     try {
+      const token = localStorage.getItem("token");
+
       const response = await Axios.post(
         process.env.REACT_APP_API_URL + "api/Ad",
         formData,
@@ -45,6 +47,7 @@ const CreateOglas = () => {
           headers: {
             Accept: "application/json",
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -235,4 +238,4 @@ const CreateOglas = () => {
     ""
   );
 };
-export default CreateOglas;
+export default CreateAd;

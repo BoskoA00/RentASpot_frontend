@@ -17,9 +17,9 @@ const EditQuestion = () => {
     }
   }, []);
   useEffect(() => {
-    PokupiPitanje();
+    getQuestion();
   }, []);
-  const PokupiPitanje = async () => {
+  const getQuestion = async () => {
     try {
       const response = await axios.get(
         process.env.REACT_APP_API_URL + `api/Question/${Qid}`
@@ -38,10 +38,18 @@ const EditQuestion = () => {
   };
   const handleSubmit = async () => {
     try {
-      await axios.put(process.env.REACT_APP_API_URL + `api/Question/${Qid}`, {
-        title: title,
-        content: content,
-      });
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      await axios.put(
+        process.env.REACT_APP_API_URL + `api/Question/${Qid}`,
+        {
+          title: title,
+          content: content,
+        },
+        { headers }
+      );
       navigate("/forum");
     } catch (e) {
       console.log("Error:" + e);

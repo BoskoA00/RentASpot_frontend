@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Pretraga from "../Components/Home/Search";
+import Search from "../Components/Home/Search";
 import Oglas from "../Components/Home/HomeCard";
 import Axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
@@ -9,39 +9,39 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const Pocetna = () => {
   const { isLightMode } = useContext(AuthContext);
-  const [oglasi, setOglasi] = useState([]);
-  const [filteredOglasi, setFilteredOglasi] = useState([]);
+  const [ads, setAds] = useState([]);
+  const [filteredAds, setFilteredAds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  const PokupiOglase = async () => {
+  const getAds = async () => {
     try {
       const response = await Axios.get(
         process.env.REACT_APP_API_URL + "api/Ad"
       );
-      setOglasi(response.data);
-      setFilteredOglasi(response.data);
+      setAds(response.data);
+      setFilteredAds(response.data);
     } catch (e) {
       console.log("Error:" + e);
     }
   };
 
   useEffect(() => {
-    PokupiOglase();
+    getAds();
   }, []);
 
   const handleSearch = (searchParams) => {
-    const filteredResults = oglasi.filter((oglas) => {
+    const filteredResults = ads.filter((ad) => {
       const matchesDrzava =
-        !searchParams.drzava || oglas.country.includes(searchParams.drzava);
+        !searchParams.drzava || ad.country.includes(searchParams.drzava);
       const matchesGrad =
-        !searchParams.grad || oglas.city.includes(searchParams.grad);
+        !searchParams.grad || ad.city.includes(searchParams.grad);
       const matchesVelicina =
-        searchParams.velicina === 0 || oglas.size <= searchParams.velicina;
+        searchParams.velicina === 0 || ad.size <= searchParams.velicina;
       const matchesMinCena =
-        searchParams.minCena === 0 || oglas.price >= searchParams.minCena;
+        searchParams.minCena === 0 || ad.price >= searchParams.minCena;
       const matchesMaxCena =
-        searchParams.maxCena === 0 || oglas.price <= searchParams.maxCena;
+        searchParams.maxCena === 0 || ad.price <= searchParams.maxCena;
 
       return (
         matchesDrzava &&
@@ -52,14 +52,14 @@ const Pocetna = () => {
       );
     });
 
-    setFilteredOglasi(filteredResults);
+    setFilteredAds(filteredResults);
     setCurrentPage(1);
   };
 
-  const totalPages = Math.ceil(filteredOglasi.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredAds.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentOglasi = filteredOglasi.slice(indexOfFirstItem, indexOfLastItem);
+  const currentOglasi = filteredAds.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -70,32 +70,32 @@ const Pocetna = () => {
       className="homepage-main"
       style={isLightMode ? {} : { backgroundColor: "#202020", color: "white" }}
     >
-      <Pretraga onSearch={handleSearch} />
+      <Search onSearch={handleSearch} />
       <div
-        className="homepage-oglasi"
+        className="homepage-ads"
         style={isLightMode ? {} : { border: "3px solid white" }}
       >
-        <div className="oglasi">
+        <div className="ads">
           {currentOglasi.length === 0 ? (
             <div style={{ textAlign: "center" }}>Nema oglasa</div>
           ) : (
-            currentOglasi.map((oglas) => (
+            currentOglasi.map((ad) => (
               <Oglas
-                key={oglas.id}
-                id={oglas.id}
-                ime={oglas.title}
-                grad={oglas.country}
-                drzava={oglas.city}
-                velicina={oglas.size}
-                cena={oglas.price}
-                type={oglas.type}
-                picturePath={oglas.picturePath}
+                key={ad.id}
+                id={ad.id}
+                name={ad.title}
+                city={ad.country}
+                country={ad.city}
+                size={ad.size}
+                price={ad.price}
+                type={ad.type}
+                picturePath={ad.picturePath}
               />
             ))
           )}
         </div>
 
-        {filteredOglasi.length !== 0 && (
+        {filteredAds.length !== 0 && (
           <div className="pagination-controls">
             <div className="pag-divs">
               <div>

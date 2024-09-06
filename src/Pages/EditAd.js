@@ -3,8 +3,8 @@ import { AuthContext } from "../Context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import Axios from "axios";
-import "../CSS/Oglas_page.css";
-const Oglas = () => {
+import "../CSS/Ad_page.css";
+const Ad = () => {
   const { user, isLightMode } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Oglas = () => {
   const [Type, setType] = useState(0);
 
   useEffect(() => {
-    PokupiOgas();
+    getAd();
   }, []);
   useEffect(() => {
     setTitle("");
@@ -27,7 +27,7 @@ const Oglas = () => {
     setPrice(0);
     setType(0);
   }, []);
-  const PokupiOgas = async () => {
+  const getAd = async () => {
     try {
       const response = await Axios.get(
         process.env.REACT_APP_API_URL + `api/Ad/${id}`
@@ -46,6 +46,10 @@ const Oglas = () => {
 
   const onSubmitHandle = async (e) => {
     try {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
       const response = await Axios.put(
         process.env.REACT_APP_API_URL + `api/Ad/${id}`,
         {
@@ -55,7 +59,8 @@ const Oglas = () => {
           Size: Size,
           Price: Price,
           Type: Type,
-        }
+        },
+        { headers }
       );
       navigate("/home");
     } catch (e) {
@@ -186,4 +191,4 @@ const Oglas = () => {
     </div>
   );
 };
-export default Oglas;
+export default Ad;

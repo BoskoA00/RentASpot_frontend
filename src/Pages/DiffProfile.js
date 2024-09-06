@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Oglas from "../Components/Profil/Oglas";
+import Ad from "../Components/Profil/Ad";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../CSS/DiffProfile.css";
@@ -7,7 +7,7 @@ import { AuthContext } from "../Context/AuthContext";
 import { Button } from "@mui/material";
 const DiffProfil = () => {
   const { id } = useParams();
-  const [Korisnik, setKorisnik] = useState(null);
+  const [User, setKorisnik] = useState(null);
   const { isLightMode, user } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
@@ -25,7 +25,13 @@ const DiffProfil = () => {
   };
   const HandleDelete = async () => {
     try {
-      await axios.delete(process.env.REACT_APP_API_URL + `api/User/${id}`);
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      await axios.delete(process.env.REACT_APP_API_URL + `api/User/${id}`, {
+        headers,
+      });
 
       navigate("/home");
     } catch (e) {
@@ -33,7 +39,7 @@ const DiffProfil = () => {
     }
   };
   return (
-    Korisnik && (
+    User && (
       <div
         className="profil-main"
         style={isLightMode ? {} : { backgroundColor: "#202020" }}
@@ -48,35 +54,33 @@ const DiffProfil = () => {
         >
           <div className="profil-data-image">
             <img
-              src={
-                process.env.REACT_APP_API_URL + `Images/${Korisnik.imageName}`
-              }
-              alt={Korisnik.imageName}
+              src={process.env.REACT_APP_API_URL + `Images/${User.imageName}`}
+              alt={User.imageName}
             />
           </div>
           <div className="profil-data-info">
             <div>
-              <h3>{Korisnik.firstName + " " + Korisnik.lastName}</h3>
+              <h3>{User.firstName + " " + User.lastName}</h3>
             </div>
             <div>
-              <h3>{Korisnik.email}</h3>
+              <h3>{User.email}</h3>
             </div>
             <div>
-              {Korisnik.role === 0 ? (
+              {User.role === 0 ? (
                 <div>
                   <h3>Kupac</h3>
                 </div>
               ) : (
                 ""
               )}
-              {Korisnik.role === 1 ? (
+              {User.role === 1 ? (
                 <div>
                   <h3>Prodavac</h3>
                 </div>
               ) : (
                 ""
               )}
-              {Korisnik.role === 2 ? (
+              {User.role === 2 ? (
                 <div>
                   <h3>Administrator</h3>
                 </div>
@@ -87,9 +91,9 @@ const DiffProfil = () => {
           </div>{" "}
         </div>
         {user && user.role === 2 && (
-          <div className="profil-dugmad-dp">
+          <div className="profil-buttons-dp">
             <div>
-              <Link to={`/profil/${Korisnik.id}/editProfile`}>
+              <Link to={`/profil/${User.id}/editProfile`}>
                 <Button
                   variant="contained"
                   sx={
@@ -122,7 +126,7 @@ const DiffProfil = () => {
           </div>
         )}
 
-        {Korisnik && Korisnik.role == 1 && (
+        {User && User.role == 1 && (
           <div
             className="profil-main-2"
             style={
@@ -131,25 +135,25 @@ const DiffProfil = () => {
                 : { backgroundColor: "black", border: "3px solid black" }
             }
           >
-            <div className="oglasi-korisnika-naslov">
+            <div className="ads-user-naslov">
               <h2>Oglasi korisnika</h2>
             </div>
-            <div className="profil-oglasi">
-              {Korisnik && Korisnik.ads && Korisnik.ads.length === 0 ? (
+            <div className="profil-ads">
+              {User && User.ads && User.ads.length === 0 ? (
                 <div>Ovaj korisnik nema oglase koje je postavio</div>
               ) : (
-                Korisnik.ads.map((oglas) => {
+                User.ads.map((ad) => {
                   return (
-                    <Oglas
-                      key={oglas.id}
-                      id={oglas.id}
-                      ime={oglas.title}
-                      grad={oglas.country}
-                      drzava={oglas.city}
-                      velicina={oglas.size}
-                      cena={oglas.price}
-                      tip={oglas.type}
-                      picturePath={oglas.picturePath}
+                    <Ad
+                      key={ad.id}
+                      id={ad.id}
+                      name={ad.title}
+                      country={ad.country}
+                      city={ad.city}
+                      size={ad.size}
+                      price={ad.price}
+                      type={ad.type}
+                      picturePath={ad.picturePath}
                     />
                   );
                 })

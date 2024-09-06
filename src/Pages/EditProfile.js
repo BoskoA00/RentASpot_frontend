@@ -8,39 +8,48 @@ import axios from "axios";
 const EditProfile = () => {
   const { user, isLightMode } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [korisnik, setKorisnik] = useState({});
+  const [profileUser, setProfileUser] = useState({});
   const { id } = useParams();
   const [firstName, setFirstName] = useState(
-    korisnik ? korisnik.firstName : ""
+    profileUser ? profileUser.firstName : ""
   );
-  const [lastName, setLastName] = useState(korisnik ? korisnik.lastName : "");
-  const [email, setEmail] = useState(korisnik ? korisnik.email : "");
+  const [lastName, setLastName] = useState(
+    profileUser ? profileUser.lastName : ""
+  );
+  const [email, setEmail] = useState(profileUser ? profileUser.email : "");
   const [password, setPassword] = useState("");
-  useEffect(() => {
-    if (user === null || !(user && user.role === 2)) {
-      navigate("/login");
-    }
-  }, [user, navigate]);
+
   const handleSubmit = async () => {
     try {
-      const resp = await axios.put(process.env.REACT_APP_API_URL + "api/User", {
-        id: korisnik.id,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      });
-      navigate(`/user/${korisnik.id}`);
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      const resp = await axios.put(
+        process.env.REACT_APP_API_URL + "api/User",
+        {
+          id: profileUser.id,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+        },
+        {
+          headers,
+        }
+      );
+      navigate(`/user/${profileUser.id}`);
     } catch (e) {
       console.log("Error:" + e);
     }
   };
-  const PokupiKorisnika = async () => {
+  const getUser = async () => {
     try {
       const resp = await axios.get(
         process.env.REACT_APP_API_URL + `api/User/${id}`
       );
-      setKorisnik(resp.data);
+      setProfileUser(resp.data);
       setEmail(resp.data.email);
       setFirstName(resp.data.firstName);
       setLastName(resp.data.lastName);
@@ -49,10 +58,10 @@ const EditProfile = () => {
     }
   };
   useEffect(() => {
-    PokupiKorisnika();
-    setEmail(korisnik.email);
-    setFirstName(korisnik.firstName);
-    setLastName(korisnik.lastName);
+    getUser();
+    setEmail(profileUser.email);
+    setFirstName(profileUser.firstName);
+    setLastName(profileUser.lastName);
   }, []);
   return (
     <div
@@ -63,8 +72,8 @@ const EditProfile = () => {
         className="editProfile-form"
         style={isLightMode ? {} : { backgroundColor: "black" }}
       >
-        <div className="ImeiPrezime">
-          <div className="Ime">
+        <div className="firstNameAndLastName">
+          <div className="firstName">
             <div>
               <FormLabel
                 sx={
@@ -179,7 +188,7 @@ const EditProfile = () => {
           </div>
         </div>
       </div>
-      <div className="dugme">
+      <div className="button">
         <Button
           sx={isLightMode ? {} : { backgroundColor: "black" }}
           variant="contained"

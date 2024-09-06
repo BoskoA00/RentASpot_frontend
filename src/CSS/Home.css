@@ -7,7 +7,7 @@
   background-color: #ddf2fd;
   min-height: 1600px;
 }
-.homepage-oglasi {
+.homepage-ads {
   border: 3px solid #427d9d;
   border-radius: 12px;
   width: 60%;
@@ -18,7 +18,7 @@
   margin-right: 2em;
   min-height: 1500px;
 }
-.oglasi {
+.ads {
   display: flex;
   flex-direction: column;
   margin-bottom: 2em;
@@ -64,7 +64,7 @@
     align-items: center;
   }
 
-  .homepage-oglasi {
+  .homepage-ads {
     width: 80%;
     margin-right: 0;
   }
